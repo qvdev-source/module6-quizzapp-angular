@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="col-md-10">
+
+      <mat-card>
+        <mat-list>
+          <div><h1>All categories</h1></div>
+          <mat-list-item *ngFor="let c of categories">
+            <mat-icon mat-list-icon>folder</mat-icon>
+            <div mat-line>{{c.title}}</div>
+            <div mat-line>{{c.description}}</div>
+            <button *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-category',c.cid]" mat-raised-button>Edit</button>&nbsp;
+            <button *ngIf="isAdmin()" routerLinkActive="active" (click)="deleteCategory(c.cid)" mat-raised-button>Delete</button>
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+
+        <div class="container text-center" style="margin-top: 20px">
+          <button  *ngIf="isAdmin()" mat-raised-button routerLinkActive="active" [routerLink]="['/add-category']">Add New Category</button>
+        </div>
+      </mat-card>
+
+
+
+    </div>
+  </div>
+</div>

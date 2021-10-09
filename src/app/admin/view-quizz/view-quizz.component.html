@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <div class="col-md-10">
+      <mat-card style="margin-top: 10px;margin-left:20px;margin-right: 20px " *ngFor="let q of quizzes">
+        <mat-card-header>
+          <div mat-card-avatar class="exam-header-image"></div>
+          <mat-card-title>
+            {{q.title}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{q.category.title}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{q.description}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button *ngIf="isAdmin()"
+                  [routerLink]="['/view-questions/',q.qId,q.title]"
+          >Questions
+          </button>
+          <button mat-stroked-button>Max Marks {{q.maxMarks}}</button>
+          <button mat-stroked-button>Number of questions {{q.numberOfQuestions}}</button>
+          <button  *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-quiz',q.qId]" mat-stroked-button style="margin-left: 20px">Update</button>
+          <button (click)="startQuiz(q.qId)" mat-stroked-button style="margin-left: 20px">Start Quiz</button>
+          <button *ngIf="isAdmin()" routerLinkActive="active" mat-stroked-button style="margin-left: 20px" (click)="deleteQuiz(q.qId)">Delete Quiz</button>
+        </mat-card-actions>
+
+      </mat-card>
+
+      <div class="container text-center" style="margin-top: 20px">
+        <button *ngIf="isAdmin()"
+          routerLinkActive="active" [routerLink]="['/add-quiz']" mat-raised-button>Add New Quiz</button>
+      </div>
+
+
+    </div>
+  </div>
+</div>
