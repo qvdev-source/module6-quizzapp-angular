@@ -55,7 +55,7 @@ const routes: Routes = [
     path: 'add-category',
     component: AddCategoryComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN]},
+    data: {roles: [Role.ADMIN,Role.SUPERADMIN]},
   },
   {
     path: 'delete-category/:cid',

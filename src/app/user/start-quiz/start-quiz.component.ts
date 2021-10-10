@@ -31,8 +31,8 @@ export class StartQuizComponent implements OnInit {
   ngOnInit(): void {
     this.preventBackButton();
     this.qid = this.router.snapshot.params.qid;
-    this.loadQuestion();
     this.randomLocationAnswer = this.myNumber[Math.floor(Math.random() * this.myNumber.length)];
+    this.loadQuestion();
     console.log(this.randomLocationAnswer);
   }
 
