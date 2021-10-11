@@ -5,6 +5,23 @@
     </div>
 
     <div class="col-md-10">
+
+      <form (ngSubmit)="searchQuiz()" method="get">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Search Quiz</mat-label>
+          <input
+            matInput placeholder="Enter here"
+            type="text"
+            id="title"
+            name="title"
+            [(ngModel)]="title"
+          />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+        <span><button type="submit">ok</button></span>
+      </form>
+
+
       <mat-card style="margin-top: 10px;margin-left:20px;margin-right: 20px " *ngFor="let q of quizzes">
         <mat-card-header>
           <div mat-card-avatar class="exam-header-image"></div>

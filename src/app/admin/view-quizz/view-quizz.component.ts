@@ -7,6 +7,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
 import {User} from "../../models/user";
 import {Role} from "../../models/role";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-view-quizz',
@@ -19,7 +20,8 @@ export class ViewQuizzComponent implements OnInit {
 
   constructor(private  quiz:QuizService,
               private authenticationService : AuthenticationService,
-              private router : Router) { }
+              private router : Router,
+              private http: HttpClient) { }
 
   ngOnInit(): void {
     this.authenticationService.currentUser.subscribe(data => {
@@ -77,6 +79,21 @@ export class ViewQuizzComponent implements OnInit {
         Swal.fire('Change are not saved','','info')
       }
     })
-
   }
+
+
+  title: string;
+
+  private getTitle() {
+
+    this.http.get<Quiz>(`http://localhost:8080/api/quiz/find/${this.title}`).subscribe(title => {
+      // @ts-ignore
+      this.quizzes = title;
+    });
+  }
+
+  searchQuiz() {
+    this.getTitle();
+  }
+
 }
