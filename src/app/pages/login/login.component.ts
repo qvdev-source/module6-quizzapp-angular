@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.user).subscribe(data=>{
       this.router.navigate(['/profile']);
     },error => {
-      this.errorMessage = "Username or password is incorrect";
+      this.errorMessage = "Username or password is incorrect";0
       console.log(error);
       }
     )

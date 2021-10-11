@@ -9,11 +9,15 @@ import Swal from "sweetalert2";
   templateUrl: './start-quiz.component.html',
   styleUrls: ['./start-quiz.component.css']
 })
+
+
 export class StartQuizComponent implements OnInit {
   qid: any;
   questions: any;
   isSubmit = false;
   timer: any;
+  myNumber = [1,2,3,4];
+  randomLocationAnswer = 0;
 
   marksGot = 0;
   correctAnswers = 0;
@@ -27,7 +31,9 @@ export class StartQuizComponent implements OnInit {
   ngOnInit(): void {
     this.preventBackButton();
     this.qid = this.router.snapshot.params.qid;
+    this.randomLocationAnswer = this.myNumber[Math.floor(Math.random() * this.myNumber.length)];
     this.loadQuestion();
+    console.log(this.randomLocationAnswer);
   }
 
   preventBackButton() {
@@ -41,7 +47,7 @@ export class StartQuizComponent implements OnInit {
     this._question.getQuestionsOfQuiz(this.qid).subscribe(
       (data: any) => {
         this.questions = data;
-        this.timer = this.questions.length * 60
+        this.timer = this.questions.length *2 *60
 
         // @ts-ignore
         this.questions.forEach((q) => {

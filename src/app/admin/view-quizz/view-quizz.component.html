@@ -42,16 +42,21 @@
           </button>
           <button mat-stroked-button>Max Marks {{q.maxMarks}}</button>
           <button mat-stroked-button>Number of questions {{q.numberOfQuestions}}</button>
-          <button  *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-quiz',q.qId]" mat-stroked-button style="margin-left: 20px">Update</button>
+          <button *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-quiz',q.qId]" mat-stroked-button
+                  style="margin-left: 20px">Update
+          </button>
           <button (click)="startQuiz(q.qId)" mat-stroked-button style="margin-left: 20px">Start Quiz</button>
-          <button *ngIf="isAdmin()" routerLinkActive="active" mat-stroked-button style="margin-left: 20px" (click)="deleteQuiz(q.qId)">Delete Quiz</button>
+          <button *ngIf="isAdmin()" routerLinkActive="active" mat-stroked-button style="margin-left: 20px"
+                  (click)="deleteQuiz(q.qId)">Delete Quiz
+          </button>
         </mat-card-actions>
 
       </mat-card>
 
       <div class="container text-center" style="margin-top: 20px">
         <button *ngIf="isAdmin()"
-          routerLinkActive="active" [routerLink]="['/add-quiz']" mat-raised-button>Add New Quiz</button>
+                routerLinkActive="active" [routerLink]="['/add-quiz']" mat-raised-button>Add New Quiz
+        </button>
       </div>
 
 
