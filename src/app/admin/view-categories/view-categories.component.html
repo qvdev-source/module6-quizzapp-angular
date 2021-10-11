@@ -9,21 +9,44 @@
       <mat-card>
         <mat-list>
           <div><h1>All categories</h1></div>
+
+          <form (ngSubmit)="searchCategory()" method="get">
+            <mat-form-field class="full-width" appearance="outline">
+              <mat-label>Search Category</mat-label>
+              <input
+                matInput placeholder="Enter here"
+                type="text"
+                id="title"
+                name="title"
+                required
+                [(ngModel)]="title"
+              />
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            </mat-form-field>
+            <span><button type="submit">ok</button></span>
+          </form>
+
+
           <mat-list-item *ngFor="let c of categories">
             <mat-icon mat-list-icon>folder</mat-icon>
             <div mat-line>{{c.title}}</div>
             <div mat-line>{{c.description}}</div>
-            <button *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-category',c.cid]" mat-raised-button>Edit</button>&nbsp;
-            <button *ngIf="isAdmin()" routerLinkActive="active" (click)="deleteCategory(c.cid)" mat-raised-button>Delete</button>
+            <button *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-category',c.cid]"
+                    mat-raised-button>Edit
+            </button>&nbsp;
+            <button *ngIf="isAdmin()" routerLinkActive="active" (click)="deleteCategory(c.cid)" mat-raised-button>
+              Delete
+            </button>
             <mat-divider></mat-divider>
           </mat-list-item>
         </mat-list>
 
         <div class="container text-center" style="margin-top: 20px">
-          <button  *ngIf="isAdmin()" mat-raised-button routerLinkActive="active" [routerLink]="['/add-category']">Add New Category</button>
+          <button *ngIf="isAdmin()" mat-raised-button routerLinkActive="active" [routerLink]="['/add-category']">Add New
+            Category
+          </button>
         </div>
       </mat-card>
-
 
 
     </div>

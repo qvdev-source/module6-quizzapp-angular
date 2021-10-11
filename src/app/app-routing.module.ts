@@ -18,6 +18,7 @@ import {ViewQuizQuestionsComponent} from "./admin/view-quiz-questions/view-quiz-
 import {AddQuestionComponent} from "./admin/add-question/add-question.component";
 import {StartQuizComponent} from "./user/start-quiz/start-quiz.component";
 import {ProfileComponent} from "./user/profile/profile.component";
+import {EditCategoryComponent} from "./admin/edit-category/edit-category.component";
 
 const routes: Routes = [
 
@@ -27,29 +28,32 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: SignupComponent},
 
-  { path: 'profile',
+  {
+    path: 'profile',
     component: AdminComponent,
     canActivate: [AuthGuard],
-    data: { roles: [Role.ADMIN, Role.USER]}
+    data: {roles: [Role.ADMIN, Role.USER]}
   },
 
-  { path: 'user-profile',
+  {
+    path: 'user-profile',
     component: ProfileComponent,
     canActivate: [AuthGuard],
-    data: { roles: [Role.ADMIN, Role.USER]}
+    data: {roles: [Role.ADMIN, Role.USER]}
   },
 
-  { path: 'admin',
+  {
+    path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.USER]},
+    data: {roles: [Role.ADMIN, Role.USER]},
   },
 
   {
     path: 'categories',
     component: ViewCategoriesComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.USER]},
+    data: {roles: [Role.ADMIN, Role.USER]},
   },
   {
     path: 'add-category',
@@ -63,12 +67,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {roles: [Role.ADMIN]},
   },
+  {
+    path: 'edit-category/:cid',
+      component: EditCategoryComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.ADMIN]},
+  },
 
   {
     path: 'quiz',
     component: ViewQuizzComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.USER]},
+    data: {roles: [Role.ADMIN, Role.USER]},
   },
   {
     path: 'add-quiz',
@@ -87,14 +97,14 @@ const routes: Routes = [
     path: 'start-quiz/:qid',
     component: StartQuizComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.USER,Role.ADMIN]},
+    data: {roles: [Role.USER, Role.ADMIN]},
   },
 
   {
     path: 'view-questions/:qid/:title',
     component: ViewQuizQuestionsComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.USER]},
+    data: {roles: [Role.ADMIN, Role.USER]},
   },
   {
     path: 'add-question/:qid/:title',
@@ -102,7 +112,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {roles: [Role.ADMIN]},
   },
-
 
 
   {path: '404', component: NotFoundComponent},
@@ -114,4 +123,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
