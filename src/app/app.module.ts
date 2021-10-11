@@ -40,6 +40,7 @@ import { AddQuestionComponent } from './admin/add-question/add-question.componen
 import { StartQuizComponent } from './user/start-quiz/start-quiz.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {NgxUiLoaderHttpModule, NgxUiLoaderModule} from "ngx-ui-loader";
+import { ChatComponent } from './admin/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {NgxUiLoaderHttpModule, NgxUiLoaderModule} from "ngx-ui-loader";
     EditQuizComponent,
     ViewQuizQuestionsComponent,
     AddQuestionComponent,
-    StartQuizComponent
+    StartQuizComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
