@@ -18,11 +18,10 @@ import {ViewQuizQuestionsComponent} from "./admin/view-quiz-questions/view-quiz-
 import {AddQuestionComponent} from "./admin/add-question/add-question.component";
 import {StartQuizComponent} from "./user/start-quiz/start-quiz.component";
 import {ProfileComponent} from "./user/profile/profile.component";
-<<<<<<< Updated upstream
-=======
+
 import {EditCategoryComponent} from "./admin/edit-category/edit-category.component";
 import {ChatComponent} from "./admin/chat/chat.component";
->>>>>>> Stashed changes
+
 
 const routes: Routes = [
 
