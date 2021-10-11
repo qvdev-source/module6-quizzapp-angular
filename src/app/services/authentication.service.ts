@@ -11,6 +11,10 @@ const API_URL = `${environment.BASE_URL}/api/authentication/`
   providedIn: 'root'
 })
 export class AuthenticationService {
+
+   userChangePassword = {
+
+   }
    public currentUser : Observable<User>;
    private currenUserSubject : BehaviorSubject<User>;
 
@@ -53,6 +57,9 @@ export class AuthenticationService {
     this.currenUserSubject.next(new User);
   }
 
+  changePassword(){
+
+  }
 
 
 
