@@ -5,6 +5,7 @@ import {QuestionService} from "../../services/question.service";
 import Swal from "sweetalert2";
 import {User} from "../../models/user";
 import {AuthenticationService} from "../../services/authentication.service";
+import {QuizHistoryService} from "../../services/quiz-history.service";
 
 @Component({
   selector: 'app-start-quiz',
@@ -26,7 +27,7 @@ export class StartQuizComponent implements OnInit {
   correctAnswers = 0;
   attempted = 0;
 
-  questionHistory={
+  quizHistory={
     userId:'',
     correctAnswers:'',
     marksGot:'',
@@ -36,7 +37,8 @@ export class StartQuizComponent implements OnInit {
   constructor(private locationSt: LocationStrategy,
               private router: ActivatedRoute,
               private _question: QuestionService,
-              private authenticationService : AuthenticationService) {
+              private authenticationService : AuthenticationService,
+              private quizHistoryService : QuizHistoryService) {
     this.authenticationService.currentUser.subscribe(data => {
       this.currenUser = data;
     });
@@ -122,19 +124,33 @@ export class StartQuizComponent implements OnInit {
         this.attempted++;
       }
       // @ts-ignore
-      this.questionHistory.userId = this.currenUser.id;
+      this.quizHistory.userId = this.currenUser.id;
       // @ts-ignore
-      this.questionHistory.marksGot = this.marksGot;
+      this.quizHistory.marksGot = this.marksGot;
       // @ts-ignore
-      this.questionHistory.correctAnswers = this.correctAnswers;
-      this.questionHistory.quizId = this.qid;
+      this.quizHistory.correctAnswers = this.correctAnswers;
+      this.quizHistory.quizId = this.qid;
 
 
     });
-    console.log(this.questionHistory)
+
     console.log(this.currenUser.id)
     console.log("Correct Answer " + this.correctAnswers)
     console.log("Mark Got " + this.marksGot);
   }
 
+
+  saveQuizHistory(quizHistory: any) {
+    this.quizHistoryService.addQuizHistory(this.quizHistory).subscribe(()=>{
+      Swal.fire('Save success','Save quiz history sucess','success');
+      this.quizHistory={
+        userId:'',
+        correctAnswers:'',
+        marksGot:'',
+        quizId:''
+      }
+    },error => {
+      Swal.fire('Error','Save quiz error','error');
+    })
+  }
 }
