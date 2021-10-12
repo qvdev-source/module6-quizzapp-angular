@@ -41,6 +41,9 @@ import { StartQuizComponent } from './user/start-quiz/start-quiz.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {NgxUiLoaderHttpModule, NgxUiLoaderModule} from "ngx-ui-loader";
 import { UpdatePasswordComponent } from './user/update-password/update-password.component';
+import { QuizFilterPipe } from './admin/view-quizz/quiz-filter.pipe';
+import { QuestionFilterPipe } from './admin/view-quiz-questions/question-filter.pipe';
+import { CategoryFilterPipe } from './admin/view-categories/category-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -65,7 +68,10 @@ import { UpdatePasswordComponent } from './user/update-password/update-password.
     ViewQuizQuestionsComponent,
     AddQuestionComponent,
     StartQuizComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    QuizFilterPipe,
+    QuestionFilterPipe,
+    CategoryFilterPipe
   ],
   imports: [
     BrowserModule,

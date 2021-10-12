@@ -9,7 +9,13 @@
       <mat-card>
         <mat-list>
           <div><h1>All categories</h1></div>
-          <mat-list-item *ngFor="let c of categories">
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>Search Category</mat-label>
+              <input matInput placeholder="Enter here" [(ngModel)]="searchText">
+            </mat-form-field>
+          </div>
+          <mat-list-item *ngFor="let c of categories | categoryFilter : searchText">
             <mat-icon mat-list-icon>folder</mat-icon>
             <div mat-line>{{c.title}}</div>
             <div mat-line>{{c.description}}</div>

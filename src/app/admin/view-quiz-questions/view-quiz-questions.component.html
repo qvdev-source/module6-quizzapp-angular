@@ -6,12 +6,18 @@
 
     <div class="col-md-10">
      <h1 style="margin-top: 20px">Questions of {{qTitle}}</h1>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Search Question</mat-label>
+          <input matInput placeholder="Enter here" [(ngModel)]="searchText">
+        </mat-form-field>
+      </div>
       <div class="row">
         <div class="col-md-12">
 
           <button mat-raised-button *ngIf="isAdmin()" [routerLink]="['/add-question',qId,qTitle]" routerLinkActive="active">Add Question</button>
 
-          <mat-card *ngFor="let q of questions;let i = index" style="margin-top: 20px">
+          <mat-card *ngFor="let q of questions | questionFilter : searchText;let i = index" style="margin-top: 20px">
             <mat-card-content>
               <p>
                 <b>Question {{i+1}}</b>

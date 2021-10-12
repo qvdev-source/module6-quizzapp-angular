@@ -32,12 +32,10 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.currenUser.username)
   }
 
   changePassword() {
     this.userChangePassword.username = this.currenUser.username;
-    console.log(this.userChangePassword);
     if (this.userChangePassword.oldPassword.trim() == '' || this.userChangePassword.oldPassword == null) {
       this.snack.open('OldPassword Required !!', '', {
         duration: 3000,
