@@ -15,7 +15,7 @@
 
         <!--        ANSWER RANDOM LOCATION 1-->
         <mat-card-content *ngIf="randomLocationAnswer == 1">
-          <p><b>Q {{i + 1}}</b> <span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
+          <p><b>Question {{i + 1}}. </b><span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
           <mat-divider></mat-divider>
           <div class="row" style="margin-top: 20px">
 
@@ -50,7 +50,7 @@
 
         <!--RANDOM LOCATION 2-->
         <mat-card-content *ngIf="randomLocationAnswer == 2">
-          <p><b>Q {{i + 1}}</b> <span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
+          <p><b>Question {{i + 1}}. </b><span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
           <mat-divider></mat-divider>
           <div class="row" style="margin-top: 20px">
 
@@ -86,7 +86,7 @@
 
         <!--        RANDOM LOCATION 3-->
         <mat-card-content *ngIf="randomLocationAnswer == 3">
-          <p><b>Q {{i + 1}}</b> <span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
+          <p><b>Question {{i + 1}}. </b><span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
           <mat-divider></mat-divider>
           <div class="row" style="margin-top: 20px">
 
@@ -122,7 +122,7 @@
 
 <!--        RANDOM LOCATION 4-->
         <mat-card-content *ngIf="randomLocationAnswer == 4">
-          <p><b>Q {{i + 1}}</b> <span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
+          <p><b>Question {{i + 1}}. </b><span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
           <mat-divider></mat-divider>
           <div class="row" style="margin-top: 20px">
 
@@ -159,8 +159,8 @@
 
 
       </mat-card>
-      <div class="container" style="margin-top: 20px">
-        <button mat-raised-button (click)="submitQuiz()">Submit Quiz</button>
+      <div class="container text-center" style="margin-top: 20px">
+        <button mat-raised-button (click)="submitQuiz()" color="accent">Submit Quiz</button>
       </div>
 
 
@@ -181,7 +181,7 @@
           <mat-spinner
             mode="determinate"
             color="accent"
-            [value]="(timer / (this.questions.length *2 *60) *100)"
+            [value]="(timer / (this.questions.length *1 *60) *100)"
             style="margin:auto"></mat-spinner>
         </mat-card-content>
       </mat-card>

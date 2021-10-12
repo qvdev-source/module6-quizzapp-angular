@@ -19,12 +19,12 @@
                  [(ngModel)]="user.username"
                  #username="ngModel"
                  required
-                 minlength="4"
+                 minlength="6"
           />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
         <div class="alert-danger" *ngIf="!username.valid && (username?.dirty||username?.touched)" style="margin-bottom: 20px">
-          User name is required.minlength=4
+          User name is required.minlength=6
         </div>
 
         <!--        fullname field-->
@@ -56,12 +56,12 @@
                  [(ngModel)]="user.password"
                  #password="ngModel"
                  required
-                 pattern="(?=^.{6,8}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                 pattern="(?=^.{6,15}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
           />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
         <div class="alert-danger" *ngIf="!password.valid && (password?.dirty||password?.touched)" style="margin-bottom: 20px">
-          Password must have a minimum of 6 characters and maximum 8 characters, at least 1 uppercase letter and a number
+          Password must have a minimum of 6 characters and maximum 15 characters, at least 1 uppercase letter and a number
         </div>
 
 
