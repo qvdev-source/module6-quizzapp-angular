@@ -1,3 +1,4 @@
+
 <div class="container">
 
   <div class="row">
@@ -19,12 +20,13 @@
                  [(ngModel)]="user.username"
                  #username="ngModel"
                  required
-                 minlength="4"
+                 minlength="6"
+                 maxlength="25"
           />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
         <div class="alert-danger" *ngIf="!username.valid && (username?.dirty||username?.touched)" style="margin-bottom: 20px">
-          User name is required.minlength=4
+          User name is required.minlength=6.maxLength=25
         </div>
 
         <!--        fullname field-->
@@ -38,31 +40,52 @@
                  #name="ngModel"
                  required
                  minlength="6"
+                 maxlength="25"
 
           />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
         <div class="alert-danger" *ngIf="!name.valid && (name?.dirty||name?.touched)" style="margin-bottom: 20px">
-          Full name is required.min length=6
+          Full name is required.min length=6.maxlength=25
         </div>
 
-        <!--        password filed-->
+        <!--        Password field-->
+
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Password</mat-label>
-          <input type="password" matInput placeholder="Enter here"
-                 type="password"
+          <mat-label> Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"
                  id="password"
                  name="password"
                  [(ngModel)]="user.password"
                  #password="ngModel"
                  required
-                 pattern="(?=^.{6,8}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-          />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                 pattern="(?=^.{6,18}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+          >
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
         <div class="alert-danger" *ngIf="!password.valid && (password?.dirty||password?.touched)" style="margin-bottom: 20px">
-          Password must have a minimum of 6 characters and maximum 8 characters, at least 1 uppercase letter and a number
+          Password must have a minimum of 6 characters and maximum 18 characters, at least 1 uppercase letter and a number
         </div>
+
+
+        <!--        ConfirmPassword Field-->
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Confirm password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"
+                 id="cfpassword"
+                 name="cfpassword"
+                 [(ngModel)]="user.confirmPassword"
+                 #password="ngModel"
+                 required
+                 pattern="(?=^.{6,18}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+          >
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
 
 
         <div class="container text-center">
@@ -81,3 +104,7 @@
   </div>
 
 </div>
+
+
+
+

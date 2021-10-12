@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
 
   user : User = new User();
   faUser = faUserCircle;
