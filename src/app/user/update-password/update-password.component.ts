@@ -21,6 +21,7 @@ export class UpdatePasswordComponent implements OnInit {
     oldPassword: '',
     newPassword: ''
   }
+  hide = true;
 
   constructor(private authenticationService: AuthenticationService, private router: Router,
               private ngxService: NgxUiLoaderService,
