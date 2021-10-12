@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoryService} from "../../services/category.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import Swal from "sweetalert2";
+import {Router} from "@angular/router";
+import {Category} from "../../models/category";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-category',
@@ -9,36 +12,44 @@ import Swal from "sweetalert2";
   styleUrls: ['./add-category.component.css']
 })
 export class AddCategoryComponent implements OnInit {
-
-  category = {
-    title: '',
-    description: '',
-  };
+  categoryForm: FormGroup;
 
   constructor(
-    private categoryService : CategoryService,
-    private snack : MatSnackBar
-  ) { }
-
-  ngOnInit(): void {
+    private categoryService: CategoryService,
+    private snack: MatSnackBar,
+    private router: Router,
+    private fb: FormBuilder) {
   }
 
-  formSubmit(){
-    if (this.category.title.trim()=='' || this.category.title == null){
-      this.snack.open("Title Required !!",'',{
-        duration:3000
-      })
-      return;
-    }
-
-    // @ts-ignore
-    this.categoryService.saveCategory(this.category).subscribe(data=>{
-      this.category.title='';
-      this.category.description='';
-      Swal.fire('Success !!','Category is added successfully','success');
-    },error => {
-      Swal.fire('Error !!','server error !!','error')
+  ngOnInit(): void {
+    this.categoryForm = this.fb.group({
+      title: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+      description: [null, Validators.maxLength(5000)]
     })
+  }
+
+  get title(): AbstractControl {
+    return this.categoryForm.get('title');
+  }
+
+  get description(): AbstractControl {
+    return this.categoryForm.get('description');
+  }
+
+  formSubmit(category: Category): void {
+    if (this.categoryForm.invalid) {
+      this.snack.open("All fields is required !!", '', {
+        duration: 3000
+      });
+    } else {
+      this.categoryService.saveCategory(category).subscribe(() => {
+        this.categoryForm.reset();
+        Swal.fire('Success !!', 'Category is added successfully', 'success');
+      }, () => {
+        Swal.fire('Error !!', 'server error !!', 'error');
+      });
+      this.router.navigate(['/categories']);
+    }
   }
 
 }

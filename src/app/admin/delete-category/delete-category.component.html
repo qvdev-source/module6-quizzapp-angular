@@ -3,11 +3,9 @@
     <div class="col-md-2">
       <app-sidebar></app-sidebar>
     </div>
-
     <div class="col-md-10 text-center">
       <div class="container">
         <h1>Do you want to delete ?</h1>
-
         <button (click)="deleteCate(cid)" mat-raised-button>Delete</button>&nbsp;
         <button [routerLink]="['/categories']" mat-raised-button>Cancel</button>
       </div>

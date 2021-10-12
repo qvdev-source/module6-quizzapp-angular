@@ -7,7 +7,6 @@ import {Quiz} from "../../models/quiz";
 })
 export class QuestionFilterPipe implements PipeTransform {
 
-
   transform(list: Question[], searchText: string): any {
       if (!list ){
         return null;
@@ -21,6 +20,5 @@ export class QuestionFilterPipe implements PipeTransform {
       });
       return list;
     }
-
 
 }

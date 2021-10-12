@@ -3,54 +3,59 @@
     <div class="col-md-2">
       <app-sidebar></app-sidebar>
     </div>
-
     <div class="col-md-10">
-
       <mat-card>
         <h1>Add New Category</h1>
         <mat-card-content>
           <div class="row">
             <div class="col-md-6 offset-md-3">
-
-              <form (ngSubmit)="formSubmit()">
-
+              <form [formGroup]="categoryForm" (ngSubmit)="formSubmit(categoryForm.value)">
                 <mat-form-field class="w-100" appearance="fill">
                   <mat-label>Title</mat-label>
                   <input
+                    formControlName="title"
                     type="text"
                     name="title"
                     matInput
                     placeholder="Enter here"
-                    [(ngModel)]="category.title"
                     required>
                 </mat-form-field>
+                <div *ngIf="title.invalid && (title.dirty || title.touched)"
+                     class="text-danger">
+                  <div *ngIf="title.errors?.required">
+                    Title is required.
+                  </div>
+                  <div *ngIf="title.errors?.minlength">
+                    Title must be at least 3 characters long.
+                  </div>
+                  <div *ngIf="title.errors?.maxlength">
+                    Title must be at least 255 characters long.
+                  </div>
+                </div>
 
                 <mat-form-field class="w-100" appearance="fill">
                   <mat-label>Description</mat-label>
                   <textarea
+                    formControlName="description"
                     name="description"
                     matInput
                     placeholder="Enter category description"
                     rows="15"
-                    [(ngModel)]="category.description"
                     required>
                   </textarea>
                 </mat-form-field>
-
-                <div class="container text-center">
-                  <button mat-raised-button>Add</button>
+                <div *ngIf="description.invalid && (title.dirty || title.touched)"
+                     class="text-danger">
+                  <p *ngIf="description.errors?.maxlength">Description must be at least 255 characters long.</p>
                 </div>
-
+                <div class="container text-center">
+                  <button mat-raised-button [disabled]="categoryForm.invalid">Create</button>
+                </div>
               </form>
             </div>
           </div>
-
-
         </mat-card-content>
       </mat-card>
-
-
-
     </div>
   </div>
 </div>

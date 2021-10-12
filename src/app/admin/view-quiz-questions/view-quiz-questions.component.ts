@@ -8,7 +8,6 @@ import {Role} from "../../models/role";
 import Swal from "sweetalert2";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
-
 @Component({
   selector: 'app-view-quiz-questions',
   templateUrl: './view-quiz-questions.component.html',
@@ -68,6 +67,5 @@ export class ViewQuizQuestionsComponent implements OnInit {
         );
       }
     })
-
   }
 }

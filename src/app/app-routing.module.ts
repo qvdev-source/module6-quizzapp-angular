@@ -18,6 +18,7 @@ import {ViewQuizQuestionsComponent} from "./admin/view-quiz-questions/view-quiz-
 import {AddQuestionComponent} from "./admin/add-question/add-question.component";
 import {StartQuizComponent} from "./user/start-quiz/start-quiz.component";
 import {ProfileComponent} from "./user/profile/profile.component";
+import {EditCategoryComponent} from "./admin/edit-category/edit-category.component";
 import {UpdatePasswordComponent} from "./user/update-password/update-password.component";
 
 const routes: Routes = [
@@ -28,13 +29,15 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: SignupComponent},
 
-  { path: 'profile',
+  {
+    path: 'profile',
     component: AdminComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
   },
 
-  { path: 'user-profile',
+  {
+    path: 'user-profile',
     component: ProfileComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
@@ -46,7 +49,8 @@ const routes: Routes = [
     data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
   },
 
-  { path: 'admin',
+  {
+    path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
     data: {roles: [Role.ADMIN,Role.USER,Role.SUPER_ADMIN]},
@@ -69,6 +73,12 @@ const routes: Routes = [
     component: DeleteCategoryComponent,
     canActivate: [AuthGuard],
     data: {roles: [Role.ADMIN,Role.SUPER_ADMIN]},
+  },
+  {
+    path: 'edit-category/:cid',
+      component: EditCategoryComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.ADMIN]},
   },
 
   {
@@ -111,7 +121,6 @@ const routes: Routes = [
   },
 
 
-
   {path: '404', component: NotFoundComponent},
   {path: '401', component: UnauthorizedComponent},
 
@@ -121,4 +130,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

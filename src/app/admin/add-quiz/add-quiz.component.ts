@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import {Quiz} from "../../models/quiz";
 import {QuizService} from "../../services/quiz.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-quiz',
@@ -36,7 +37,8 @@ export class AddQuizComponent implements OnInit {
 
   constructor(private cate : CategoryService,
               private _quiz:QuizService,
-              private snack:MatSnackBar) { }
+              private snack:MatSnackBar,
+              private router: Router) { }
 
   ngOnInit(): void {
   this.cate.getAllCategory().subscribe((data:any)=>{
@@ -77,7 +79,7 @@ export class AddQuizComponent implements OnInit {
       Swal.fire('Error','error !!','error');
       console.log(error)
     })
-
+    this.router.navigate(['/quiz']);
 
   }
 

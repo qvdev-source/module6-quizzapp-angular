@@ -3,7 +3,6 @@
     <div class="col-md-2">
       <app-sidebar></app-sidebar>
     </div>
-
     <div class="col-md-10">
       <div class="row" style="margin-top: 20px">
         <div class="col-md-12">
@@ -14,7 +13,6 @@
                 Enter the details of the question
               </mat-card-subtitle>
             </mat-card-header>
-
             <mat-card-content>
               <form (submit)="formSubmit()" style="margin-top: 20px">
 
@@ -24,13 +22,9 @@
                             [(ngModel)]="question.content"
                             name="content"
                             rows="6"
-                            required
-                  >
+                            required>
                     </textarea>
-
                 </mat-form-field>
-
-
                 <!--                options-->
                 <div class="row">
                   <div class="col-md-6">
@@ -41,7 +35,6 @@
                              [(ngModel)]="question.option1"
                              name="option1" required>
                     </mat-form-field>
-
                   </div>
                   <div class="col-md-6">
                     <!--option  2-->
@@ -51,10 +44,8 @@
                              [(ngModel)]="question.option2"
                              name="option2" required>
                     </mat-form-field>
-
                   </div>
                 </div>
-
                 <div class="row">
                   <div class="col-md-6">
                     <mat-form-field class="w-100">
@@ -72,10 +63,7 @@
                              name="option4" required>
                     </mat-form-field>
                   </div>
-
                   <!--                  answer-->
-
-
                 </div>
                 <mat-form-field class="w-100">
                   <mat-label>Select Answer</mat-label>
@@ -102,15 +90,11 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-
                 <div class="container-fluid">
                   <button mat-raised-button>Add</button>
                 </div>
-
               </form>
             </mat-card-content>
-
-
           </mat-card>
         </div>
       </div>

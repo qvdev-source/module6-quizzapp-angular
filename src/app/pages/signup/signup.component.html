@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <h1 class="text-center mt-3">Register Here !!</h1>
@@ -8,7 +7,6 @@
         <div class="alert alert-danger" *ngIf="errorMessage">
           {{errorMessage}}
         </div>
-
         <!--        username field-->
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Username</mat-label>
@@ -19,14 +17,13 @@
                  [(ngModel)]="user.username"
                  #username="ngModel"
                  required
-                 minlength="4"
-          />
+                 minlength="4"/>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
-        <div class="alert-danger" *ngIf="!username.valid && (username?.dirty||username?.touched)" style="margin-bottom: 20px">
+        <div class="alert-danger" *ngIf="!username.valid && (username?.dirty||username?.touched)"
+             style="margin-bottom: 20px">
           User name is required.minlength=4
         </div>
-
         <!--        fullname field-->
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Full Name</mat-label>
@@ -38,14 +35,12 @@
                  #name="ngModel"
                  required
                  minlength="6"
-
           />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
         <div class="alert-danger" *ngIf="!name.valid && (name?.dirty||name?.touched)" style="margin-bottom: 20px">
           Full name is required.min length=6
         </div>
-
         <!--        password filed-->
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Password</mat-label>
@@ -60,24 +55,20 @@
           />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
-        <div class="alert-danger" *ngIf="!password.valid && (password?.dirty||password?.touched)" style="margin-bottom: 20px">
-          Password must have a minimum of 6 characters and maximum 8 characters, at least 1 uppercase letter and a number
+        <div class="alert-danger" *ngIf="!password.valid && (password?.dirty||password?.touched)"
+             style="margin-bottom: 20px">
+          Password must have a minimum of 6 characters and maximum 8 characters, at least 1 uppercase letter and a
+          number
         </div>
-
-
         <div class="container text-center">
           <button mat-raised-button color="primary" type="submit">Register</button>
         </div>
-
       </form>
-
       <div class="container text-center">
         <a [routerLink]="['/login']" class="btn btn-link" style="color: darkgray;">
           I have an account!
         </a>
       </div>
-
     </div>
   </div>
-
 </div>
