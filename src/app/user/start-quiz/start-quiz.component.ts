@@ -27,19 +27,19 @@ export class StartQuizComponent implements OnInit {
   correctAnswers = 0;
   attempted = 0;
 
-  quizHistory={
-    userId:'',
-    correctAnswers:'',
-    marksGot:'',
-    quizId:''
+  quizHistory = {
+    userId: '',
+    correctAnswers: '',
+    marksGot: '',
+    quizId: ''
   }
 
   constructor(private locationSt: LocationStrategy,
               private router: ActivatedRoute,
-              private _router:Router,
+              private _router: Router,
               private _question: QuestionService,
-              private authenticationService : AuthenticationService,
-              private quizHistoryService : QuizHistoryService) {
+              private authenticationService: AuthenticationService,
+              private quizHistoryService: QuizHistoryService) {
     this.authenticationService.currentUser.subscribe(data => {
       this.currenUser = data;
     });
@@ -131,34 +131,27 @@ export class StartQuizComponent implements OnInit {
       // @ts-ignore
       this.quizHistory.correctAnswers = this.correctAnswers;
       this.quizHistory.quizId = this.qid;
-
-
     });
-
-    console.log(this.currenUser.id)
-    console.log("Correct Answer " + this.correctAnswers)
-    console.log("Mark Got " + this.marksGot);
   }
 
-
   saveQuizHistory(quizHistory: any) {
-    this.quizHistoryService.addQuizHistory(this.quizHistory).subscribe(()=>{
+    this.quizHistoryService.addQuizHistory(this.quizHistory).subscribe(() => {
       Swal.fire({
         title: 'Save success',
         confirmButtonText: 'OK',
         icon: "success"
       }).then((e) => {
-        this.quizHistory={
-          userId:'',
-          correctAnswers:'',
-          marksGot:'',
-          quizId:''
+        this.quizHistory = {
+          userId: '',
+          correctAnswers: '',
+          marksGot: '',
+          quizId: ''
         }
         this._router.navigate(['/profile']);
       })
 
-    },error => {
-      Swal.fire('Error','Save quiz error','error');
+    }, error => {
+      Swal.fire('Error', 'Save quiz error', 'error');
     })
   }
 }
