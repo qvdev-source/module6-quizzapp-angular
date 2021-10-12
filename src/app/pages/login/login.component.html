@@ -30,20 +30,21 @@
 
         <!--        password field-->
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Password</mat-label>
-          <input matInput placeholder="Enter here"
-                 type="password"
+          <mat-label> Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"
                  id="password"
                  name="password"
                  [(ngModel)]="user.password"
                  #password="ngModel"
                  required
                  pattern="(?=^.{6,8}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-          />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          >
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
-        <div class="alert-danger" *ngIf="!password.valid &&(password?.dirty||password?.touched)" style="margin-bottom: 20px">
-          Password must have a minimum of 6 characters and max 8 characters, at least 1 uppercase letter and a number
+        <div class="alert-danger" *ngIf="!password.valid && (password?.dirty||password?.touched)" style="margin-bottom: 20px">
+          Password must have a minimum of 6 characters and maximum 8 characters, at least 1 uppercase letter and a number
         </div>
 
 

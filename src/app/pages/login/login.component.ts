@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user";
 import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
 import {AuthenticationService} from "../../services/authentication.service";
@@ -10,27 +10,28 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  user : User = new User();
+  hide = true;
+  user: User = new User();
   faUser = faUserCircle;
-  errorMessage : string = "";
+  errorMessage: string = "";
 
-  constructor(private authenticationService : AuthenticationService ,
-              private router : Router) { }
+  constructor(private authenticationService: AuthenticationService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
-    if (this.authenticationService.currentUserValue?.id){
+    if (this.authenticationService.currentUserValue?.id) {
       this.router.navigate(['/profile']);
       return;
     }
   }
 
-  login(){
-    this.authenticationService.login(this.user).subscribe(data=>{
-      this.router.navigate(['/profile']);
-    },error => {
-      this.errorMessage = "Username or password is incorrect";
-      console.log(error);
+  login() {
+    this.authenticationService.login(this.user).subscribe(data => {
+        this.router.navigate(['/profile']);
+      }, error => {
+        this.errorMessage = "Username or password is incorrect";
+        console.log(error);
       }
     )
   }
