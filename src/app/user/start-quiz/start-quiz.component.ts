@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {formatNumber, LocationStrategy} from "@angular/common";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {QuestionService} from "../../services/question.service";
 import Swal from "sweetalert2";
 import {User} from "../../models/user";
@@ -36,6 +36,7 @@ export class StartQuizComponent implements OnInit {
 
   constructor(private locationSt: LocationStrategy,
               private router: ActivatedRoute,
+              private _router:Router,
               private _question: QuestionService,
               private authenticationService : AuthenticationService,
               private quizHistoryService : QuizHistoryService) {
@@ -142,13 +143,20 @@ export class StartQuizComponent implements OnInit {
 
   saveQuizHistory(quizHistory: any) {
     this.quizHistoryService.addQuizHistory(this.quizHistory).subscribe(()=>{
-      Swal.fire('Save success','Save quiz history sucess','success');
-      this.quizHistory={
-        userId:'',
-        correctAnswers:'',
-        marksGot:'',
-        quizId:''
-      }
+      Swal.fire({
+        title: 'Save success',
+        confirmButtonText: 'OK',
+        icon: "success"
+      }).then((e) => {
+        this.quizHistory={
+          userId:'',
+          correctAnswers:'',
+          marksGot:'',
+          quizId:''
+        }
+        this._router.navigate(['/profile']);
+      })
+
     },error => {
       Swal.fire('Error','Save quiz error','error');
     })
