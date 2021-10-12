@@ -23,6 +23,10 @@ export class SidebarComponent  {
     return this.currenUser?.role === Role.ADMIN;
   }
 
+  isSuperAdmin() {
+    return this.currenUser?.role === Role.SUPER_ADMIN;
+  }
+
   logout() {
       this.authenticationService.logOut();
       this.router.navigate(['/login']);

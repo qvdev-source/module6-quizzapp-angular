@@ -3,9 +3,17 @@
     <div class="col-md-2">
       <app-sidebar></app-sidebar>
     </div>
-
+<!--    main content-->
     <div class="col-md-10">
-      <mat-card style="margin-top: 10px;margin-left:20px;margin-right: 20px " *ngFor="let q of quizzes">
+<!--      search-->
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Search Quiz</mat-label>
+          <input matInput placeholder="Enter here" [(ngModel)]="searchText">
+        </mat-form-field>
+      </div>
+<!--      view quiz-->
+      <mat-card style="margin-top: 10px;margin-right: 20px " *ngFor="let q of quizzes | quizFilter : searchText">
         <mat-card-header>
           <div mat-card-avatar class="exam-header-image"></div>
           <mat-card-title>
@@ -33,16 +41,13 @@
                   (click)="deleteQuiz(q.qId)">Delete Quiz
           </button>
         </mat-card-actions>
-
       </mat-card>
-
+<!--      button add-->
       <div class="container text-center" style="margin-top: 20px">
         <button *ngIf="isAdmin()"
                 routerLinkActive="active" [routerLink]="['/add-quiz']" mat-raised-button>Add New Quiz
         </button>
       </div>
-
-
     </div>
   </div>
 </div>
