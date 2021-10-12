@@ -38,12 +38,12 @@
                  [(ngModel)]="user.password"
                  #password="ngModel"
                  required
-                 pattern="(?=^.{6,8}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                 pattern="(?=^.{6,18}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
           />
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
         <div class="alert-danger" *ngIf="!password.valid &&(password?.dirty||password?.touched)" style="margin-bottom: 20px">
-          Password must have a minimum of 6 characters and max 8 characters, at least 1 uppercase letter and a number
+          Password must have a minimum of 6 characters and max 18 characters, at least 1 uppercase letter and a number
         </div>
 
 

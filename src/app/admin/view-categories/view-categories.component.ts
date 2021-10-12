@@ -15,6 +15,7 @@ export class ViewCategoriesComponent implements OnInit {
   currenUser: User = new User;
 
   categories : Array<Category>=[];
+  searchText: any;
 
   constructor(private categoryService : CategoryService, private authenticationService : AuthenticationService) { }
 

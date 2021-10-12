@@ -18,6 +18,7 @@ import {ViewQuizQuestionsComponent} from "./admin/view-quiz-questions/view-quiz-
 import {AddQuestionComponent} from "./admin/add-question/add-question.component";
 import {StartQuizComponent} from "./user/start-quiz/start-quiz.component";
 import {ProfileComponent} from "./user/profile/profile.component";
+import {UpdatePasswordComponent} from "./user/update-password/update-password.component";
 
 const routes: Routes = [
 
@@ -30,77 +31,83 @@ const routes: Routes = [
   { path: 'profile',
     component: AdminComponent,
     canActivate: [AuthGuard],
-    data: { roles: [Role.ADMIN, Role.USER]}
+    data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
   },
 
   { path: 'user-profile',
     component: ProfileComponent,
     canActivate: [AuthGuard],
-    data: { roles: [Role.ADMIN, Role.USER]}
+    data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
+  },
+
+  { path: 'user-profile/changepassword',
+    component: UpdatePasswordComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
   },
 
   { path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.USER]},
+    data: {roles: [Role.ADMIN,Role.USER,Role.SUPER_ADMIN]},
   },
 
   {
     path: 'categories',
     component: ViewCategoriesComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.USER]},
+    data: {roles: [Role.ADMIN,Role.USER,Role.SUPER_ADMIN]},
   },
   {
     path: 'add-category',
     component: AddCategoryComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.SUPERADMIN]},
+    data: {roles: [Role.ADMIN,Role.SUPER_ADMIN]},
   },
   {
     path: 'delete-category/:cid',
     component: DeleteCategoryComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN]},
+    data: {roles: [Role.ADMIN,Role.SUPER_ADMIN]},
   },
 
   {
     path: 'quiz',
     component: ViewQuizzComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.USER]},
+    data: {roles: [Role.ADMIN,Role.USER,Role.SUPER_ADMIN]},
   },
   {
     path: 'add-quiz',
     component: AddQuizComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN]},
+    data: {roles: [Role.ADMIN,Role.SUPER_ADMIN]},
   },
   {
     path: 'edit-quiz/:qid',
     component: EditQuizComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN]},
+    data: {roles: [Role.ADMIN,Role.SUPER_ADMIN]},
   },
 
   {
     path: 'start-quiz/:qid',
     component: StartQuizComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.USER,Role.ADMIN]},
+    data: {roles: [Role.USER,Role.ADMIN,Role.SUPER_ADMIN]},
   },
 
   {
     path: 'view-questions/:qid/:title',
     component: ViewQuizQuestionsComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.USER]},
+    data: {roles: [Role.ADMIN,Role.USER,Role.SUPER_ADMIN]},
   },
   {
     path: 'add-question/:qid/:title',
     component: AddQuestionComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN]},
+    data: {roles: [Role.ADMIN,Role.SUPER_ADMIN]},
   },
 
 

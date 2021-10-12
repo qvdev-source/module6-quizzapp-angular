@@ -16,6 +16,7 @@ import {Role} from "../../models/role";
 export class ViewQuizzComponent implements OnInit {
   quizzes : Array<Quiz>=[];
   currenUser: User = new User;
+  searchText: any;
 
   constructor(private  quiz:QuizService,
               private authenticationService : AuthenticationService,

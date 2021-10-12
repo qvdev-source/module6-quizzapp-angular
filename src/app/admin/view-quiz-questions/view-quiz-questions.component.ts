@@ -20,6 +20,7 @@ export class ViewQuizQuestionsComponent implements OnInit {
   qId:string;
   qTitle:string;
   questions:any;
+  searchText:any;
 
   constructor(private _route:ActivatedRoute,
               private _question:QuestionService,
