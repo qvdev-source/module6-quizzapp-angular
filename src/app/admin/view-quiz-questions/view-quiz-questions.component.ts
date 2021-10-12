@@ -8,7 +8,6 @@ import {Role} from "../../models/role";
 import Swal from "sweetalert2";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
-
 @Component({
   selector: 'app-view-quiz-questions',
   templateUrl: './view-quiz-questions.component.html',
@@ -20,6 +19,7 @@ export class ViewQuizQuestionsComponent implements OnInit {
   qId:string;
   qTitle:string;
   questions:any;
+  searchText:any;
 
   constructor(private _route:ActivatedRoute,
               private _question:QuestionService,
@@ -67,6 +67,5 @@ export class ViewQuizQuestionsComponent implements OnInit {
         );
       }
     })
-
   }
 }

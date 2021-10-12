@@ -44,7 +44,6 @@
                     required>
                   </textarea>
                 </mat-form-field>
-
                 <div *ngIf="description.invalid && (title.dirty || title.touched)"
                      class="text-danger">
                   <p *ngIf="description.errors?.maxlength">Description must be at least 255 characters long.</p>

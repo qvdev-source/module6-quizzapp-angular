@@ -3,26 +3,31 @@
     <div class="col-md-2">
       <app-sidebar></app-sidebar>
     </div>
-
+    <!--    main content-->
     <div class="col-md-10">
-
-      <form (ngSubmit)="searchQuiz()" method="get">
-        <mat-form-field class="full-width" appearance="outline">
+<!--      <form (ngSubmit)="searchQuiz()" method="get">-->
+<!--        <mat-form-field class="full-width" appearance="outline">-->
+<!--          <mat-label>Search Quiz</mat-label>-->
+<!--          <input-->
+<!--            matInput placeholder="Enter here"-->
+<!--            type="text"-->
+<!--            id="title"-->
+<!--            name="title"-->
+<!--            [(ngModel)]="title"-->
+<!--          />-->
+<!--          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>-->
+<!--        </mat-form-field>-->
+<!--        <span><button type="submit">ok</button></span>-->
+<!--      </form>-->
+      <!--      search-->
+      <div>
+        <mat-form-field appearance="outline">
           <mat-label>Search Quiz</mat-label>
-          <input
-            matInput placeholder="Enter here"
-            type="text"
-            id="title"
-            name="title"
-            [(ngModel)]="title"
-          />
-          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <input matInput placeholder="Enter here" [(ngModel)]="searchText">
         </mat-form-field>
-        <span><button type="submit">ok</button></span>
-      </form>
-
-
-      <mat-card style="margin-top: 10px;margin-left:20px;margin-right: 20px " *ngFor="let q of quizzes">
+      </div>
+      <!--      view quiz-->
+      <mat-card style="margin-top: 10px;margin-right: 20px " *ngFor="let q of quizzes | quizFilter : searchText">
         <mat-card-header>
           <div mat-card-avatar class="exam-header-image"></div>
           <mat-card-title>
@@ -50,16 +55,13 @@
                   (click)="deleteQuiz(q.qId)">Delete Quiz
           </button>
         </mat-card-actions>
-
       </mat-card>
-
+      <!--      button add-->
       <div class="container text-center" style="margin-top: 20px">
         <button *ngIf="isAdmin()"
                 routerLinkActive="active" [routerLink]="['/add-quiz']" mat-raised-button>Add New Quiz
         </button>
       </div>
-
-
     </div>
   </div>
 </div>

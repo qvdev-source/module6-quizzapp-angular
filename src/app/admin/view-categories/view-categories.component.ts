@@ -20,7 +20,8 @@ const API_URL = `${environment}/api/category/find/`
 export class ViewCategoriesComponent implements OnInit {
   currenUser: User = new User;
 
-  categories: Array<Category> = [];
+  categories : Array<Category>=[];
+  searchText: any;
 
   constructor(private categoryService: CategoryService,
               private authenticationService: AuthenticationService,
@@ -66,7 +67,6 @@ export class ViewCategoriesComponent implements OnInit {
         })
       }
     })
-
 
   }
 

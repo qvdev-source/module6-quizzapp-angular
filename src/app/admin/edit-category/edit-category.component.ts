@@ -27,7 +27,6 @@ export class EditCategoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   getCategory(cid: number) {
     this.http.get<Category>(`${API_URL}${cid}`).subscribe((data) => {
       this.categoryForm = new FormGroup({

@@ -3,30 +3,17 @@
     <div class="col-md-2">
       <app-sidebar></app-sidebar>
     </div>
-
     <div class="col-md-10">
-
       <mat-card>
         <mat-list>
           <div><h1>All categories</h1></div>
-
-          <form (ngSubmit)="searchCategory()" method="get">
-            <mat-form-field class="full-width" appearance="outline">
+          <div>
+            <mat-form-field appearance="outline">
               <mat-label>Search Category</mat-label>
-              <input
-                matInput placeholder="Enter here"
-                type="text"
-                id="title"
-                name="title"
-                [(ngModel)]="title"
-              />
-              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <input matInput placeholder="Enter here" [(ngModel)]="searchText">
             </mat-form-field>
-            <span><button type="submit">ok</button></span>
-          </form>
-
-
-          <mat-list-item *ngFor="let c of categories">
+          </div>
+          <mat-list-item *ngFor="let c of categories | categoryFilter : searchText">
             <mat-icon mat-list-icon>folder</mat-icon>
             <div mat-line>{{c.title}}</div>
             <div mat-line>{{c.description}}</div>
@@ -39,15 +26,12 @@
             <mat-divider></mat-divider>
           </mat-list-item>
         </mat-list>
-
         <div class="container text-center" style="margin-top: 20px">
           <button *ngIf="isAdmin()" mat-raised-button routerLinkActive="active" [routerLink]="['/add-category']">Add New
             Category
           </button>
         </div>
       </mat-card>
-
-
     </div>
   </div>
 </div>
