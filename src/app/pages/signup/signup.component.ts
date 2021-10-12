@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
@@ -9,21 +9,23 @@ import {Router} from "@angular/router";
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
+  hide = true;
   user: User = new User();
-  errorMessage: string ="";
+  errorMessage: string = "";
 
-  constructor(private authenticationService : AuthenticationService,
-              private router : Router) { }
+  constructor(private authenticationService: AuthenticationService,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
-    if (this.authenticationService.currentUserValue?.id){
+    if (this.authenticationService.currentUserValue?.id) {
       this.router.navigate(['/profile']);
       return;
     }
   }
 
   register() {
+    this.authenticationService.MathPassword(this.user.password, this.user.confirmPassword)
     this.authenticationService.register(this.user).subscribe(data => {
       this.router.navigate(['/login']);
     }, err => {
