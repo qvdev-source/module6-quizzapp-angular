@@ -10,7 +10,6 @@ import {Role} from "../../models/role";
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent  {
-
   currenUser: User = new User;
 
   constructor(private authenticationService: AuthenticationService, private router: Router) {
