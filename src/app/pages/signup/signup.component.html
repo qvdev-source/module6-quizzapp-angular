@@ -72,20 +72,20 @@
 
         <!--        ConfirmPassword Field-->
 
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Confirm password</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'"
-                 id="cfpassword"
-                 name="cfpassword"
-                 [(ngModel)]="user.confirmPassword"
-                 #password="ngModel"
-                 required
-                 pattern="(?=^.{6,18}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-          >
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
+<!--        <mat-form-field class="full-width" appearance="outline">-->
+<!--          <mat-label>Confirm password</mat-label>-->
+<!--          <input matInput [type]="hide ? 'password' : 'text'"-->
+<!--                 id="cfpassword"-->
+<!--                 name="cfpassword"-->
+<!--                 [(ngModel)]="user.confirmPassword"-->
+<!--                 #password="ngModel"-->
+<!--                 required-->
+<!--                 pattern="(?=^.{6,18}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"-->
+<!--          >-->
+<!--          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
+<!--            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
+<!--          </button>-->
+<!--        </mat-form-field>-->
 
 
         <div class="container text-center">
