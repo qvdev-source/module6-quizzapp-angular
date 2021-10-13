@@ -32,8 +32,8 @@ export class CategoryService  extends RequestBaseService{
     return this.http.delete( `${API_URL}/${category.cid}`, {headers: this.getHeaders});
   }
 
-  getAllCategory(): Observable<any> {
-    return this.http.get(API_URL);
+  getAllCategory(): Observable<Category[]> {
+    return this.http.get<Category[]>(API_URL);
   }
 
 
