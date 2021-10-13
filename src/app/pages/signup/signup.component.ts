@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  hide = true;
 
   user: User = new User();
   errorMessage: string ="";

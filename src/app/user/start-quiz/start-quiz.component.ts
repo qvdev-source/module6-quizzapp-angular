@@ -1,8 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {formatNumber, LocationStrategy} from "@angular/common";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {QuestionService} from "../../services/question.service";
 import Swal from "sweetalert2";
+import {User} from "../../models/user";
+import {AuthenticationService} from "../../services/authentication.service";
+import {QuizHistoryService} from "../../services/quiz-history.service";
 
 @Component({
   selector: 'app-start-quiz',
@@ -12,20 +15,34 @@ import Swal from "sweetalert2";
 
 
 export class StartQuizComponent implements OnInit {
+  currenUser: User = new User;
   qid: any;
   questions: any;
   isSubmit = false;
   timer: any;
-  myNumber = [1,2,3,4];
+  myNumber = [1, 2, 3, 4];
   randomLocationAnswer = 0;
 
   marksGot = 0;
   correctAnswers = 0;
   attempted = 0;
 
+  quizHistory = {
+    userId: '',
+    correctAnswers: '',
+    marksGot: '',
+    quizId: ''
+  }
+
   constructor(private locationSt: LocationStrategy,
               private router: ActivatedRoute,
-              private _question: QuestionService) {
+              private _router: Router,
+              private _question: QuestionService,
+              private authenticationService: AuthenticationService,
+              private quizHistoryService: QuizHistoryService) {
+    this.authenticationService.currentUser.subscribe(data => {
+      this.currenUser = data;
+    });
   }
 
   ngOnInit(): void {
@@ -34,6 +51,7 @@ export class StartQuizComponent implements OnInit {
     this.randomLocationAnswer = this.myNumber[Math.floor(Math.random() * this.myNumber.length)];
     this.loadQuestion();
     console.log(this.randomLocationAnswer);
+    console.log(this.currenUser.id)
   }
 
   preventBackButton() {
@@ -47,7 +65,7 @@ export class StartQuizComponent implements OnInit {
     this._question.getQuestionsOfQuiz(this.qid).subscribe(
       (data: any) => {
         this.questions = data;
-        this.timer = this.questions.length *2 *60
+        this.timer = this.questions.length * 2 * 60
 
         // @ts-ignore
         this.questions.forEach((q) => {
@@ -94,7 +112,6 @@ export class StartQuizComponent implements OnInit {
   }
 
   evalQuiz() {
-
     this.isSubmit = true;
     // @ts-ignore
     this.questions.forEach(q => {
@@ -107,11 +124,34 @@ export class StartQuizComponent implements OnInit {
       if (q.givenAnswer.trim() != '') {
         this.attempted++;
       }
-
+      // @ts-ignore
+      this.quizHistory.userId = this.currenUser.id;
+      // @ts-ignore
+      this.quizHistory.marksGot = this.marksGot;
+      // @ts-ignore
+      this.quizHistory.correctAnswers = this.correctAnswers;
+      this.quizHistory.quizId = this.qid;
     });
-    //
-    // console.log("Correct Answer " + this.correctAnswers)
-    // console.log("Mark Got " + this.marksGot);
   }
 
+  saveQuizHistory(quizHistory: any) {
+    this.quizHistoryService.addQuizHistory(this.quizHistory).subscribe(() => {
+      Swal.fire({
+        title: 'Save success',
+        confirmButtonText: 'OK',
+        icon: "success"
+      }).then((e) => {
+        this.quizHistory = {
+          userId: '',
+          correctAnswers: '',
+          marksGot: '',
+          quizId: ''
+        }
+        this._router.navigate(['/profile']);
+      })
+
+    }, error => {
+      Swal.fire('Error', 'Save quiz error', 'error');
+    })
+  }
 }
