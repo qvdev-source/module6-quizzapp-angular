@@ -44,6 +44,8 @@ import { UpdatePasswordComponent } from './user/update-password/update-password.
 import { QuizFilterPipe } from './admin/view-quizz/quiz-filter.pipe';
 import { QuestionFilterPipe } from './admin/view-quiz-questions/question-filter.pipe';
 import { CategoryFilterPipe } from './admin/view-categories/category-filter.pipe';
+import { ShowUserComponent } from './superadmin/show-user/show-user.component';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -71,33 +73,35 @@ import { CategoryFilterPipe } from './admin/view-categories/category-filter.pipe
     UpdatePasswordComponent,
     QuizFilterPipe,
     QuestionFilterPipe,
-    CategoryFilterPipe
+    CategoryFilterPipe,
+    ShowUserComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    FormsModule,
-    MatSnackBarModule,
-    HttpClientModule,
-    FontAwesomeModule,
-    MatCardModule,
-    MatListModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatFormFieldModule,
-    MatProgressSpinnerModule,
-    NgxUiLoaderModule,
-    NgxUiLoaderHttpModule.forRoot({
-      showForeground:true
-    })
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatIconModule,
+        FormsModule,
+        MatSnackBarModule,
+        HttpClientModule,
+        FontAwesomeModule,
+        MatCardModule,
+        MatListModule,
+        MatSlideToggleModule,
+        MatSelectModule,
+        MatOptionModule,
+        MatFormFieldModule,
+        MatProgressSpinnerModule,
+        NgxUiLoaderModule,
+        NgxUiLoaderHttpModule.forRoot({
+            showForeground: true
+        }),
+        MatTableModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

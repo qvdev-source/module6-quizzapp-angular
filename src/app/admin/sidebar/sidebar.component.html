@@ -1,8 +1,9 @@
-<mat-card>
+<mat-card style="margin-top: 20px">
   <mat-action-list>
     <div mat-subheader>Menu</div>
     <button mat-list-item routerLinkActive="active"><mat-icon mat-list-icon>home</mat-icon>Home</button>
     <button mat-list-item  routerLinkActive="active" [routerLink]="['/user-profile']"><mat-icon mat-list-icon>face</mat-icon>Profile</button>
+    <button mat-list-item  *ngIf="isSuperAdmin() || isAdmin()" routerLinkActive="active" [routerLink]="['/all-user']"><mat-icon mat-list-icon>face</mat-icon>All User</button>
     <button mat-list-item routerLinkActive="active" [routerLink]="['/categories']">
       <mat-icon mat-list-icon>list</mat-icon>Categories</button>
     <button routerLinkActive="active" *ngIf="isAdmin() || isSuperAdmin()" [routerLink]="['/add-category']" mat-list-item routerLinkActive="active"><mat-icon mat-list-icon>add_circle_outline</mat-icon>Add Categories</button>
