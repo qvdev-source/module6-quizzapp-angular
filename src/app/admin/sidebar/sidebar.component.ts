@@ -3,16 +3,24 @@ import {User} from "../../models/user";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
 import {Role} from "../../models/role";
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
+
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+  styleUrls: ['./sidebar.component.css'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class SidebarComponent  {
   currenUser: User = new User;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private authenticationService: AuthenticationService,
+              private router: Router,
+              config: NgbModalConfig,
+              private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
     this.authenticationService.currentUser.subscribe(data => {
       this.currenUser = data;
     });
@@ -30,5 +38,9 @@ export class SidebarComponent  {
       this.authenticationService.logOut();
       this.router.navigate(['/login']);
 
+  }
+  content:any;
+  open(content: any) {
+    this.modalService.open(content);
   }
 }
