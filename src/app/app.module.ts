@@ -44,6 +44,9 @@ import { UpdatePasswordComponent } from './user/update-password/update-password.
 import { QuizFilterPipe } from './admin/view-quizz/quiz-filter.pipe';
 import { QuestionFilterPipe } from './admin/view-quiz-questions/question-filter.pipe';
 import { CategoryFilterPipe } from './admin/view-categories/category-filter.pipe';
+import { ChatComponent } from './user/chat/chat.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
+
 
 @NgModule({
   declarations: [
@@ -71,7 +74,9 @@ import { CategoryFilterPipe } from './admin/view-categories/category-filter.pipe
     UpdatePasswordComponent,
     QuizFilterPipe,
     QuestionFilterPipe,
-    CategoryFilterPipe
+    CategoryFilterPipe,
+    ChatComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,7 @@
     <button mat-list-item [routerLink]="['/categories']">
       <mat-icon mat-list-icon>list</mat-icon>Categories</button>
     <button  [routerLink]="['/quiz']" mat-list-item><mat-icon mat-list-icon>quiz</mat-icon>Quizzes</button>
+    <button  [routerLink]="['/chat']" mat-list-item><mat-icon mat-list-icon>quiz</mat-icon>Chat</button>
     <button (click)="logout()" *ngIf="currenUser?.id" mat-list-item><mat-icon mat-list-icon>logout</mat-icon>Log out</button>
   </mat-action-list>
 </mat-card>

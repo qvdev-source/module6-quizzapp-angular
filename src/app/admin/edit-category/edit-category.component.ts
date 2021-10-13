@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
 import {Category} from "../../models/category";
 import Swal from "sweetalert2";
 import {environment} from "../../../environments/environment";
-const API_URL = `${environment}/api/category/`
+const API_URL = `http://localhost:8080/api/category/`
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
@@ -38,7 +38,7 @@ export class EditCategoryComponent implements OnInit {
   }
 
   saveCategory() {
-    this.http.put<Category>(`${API_URL}${this.cid}`, this.categoryForm.value).subscribe((data) => {
+    this.http.put<Category>(`http://localhost:8080/api/category/${this.cid}`, this.categoryForm.value).subscribe((data) => {
       Swal.fire('Success !!','quiz updated','success');
       this.router.navigate(['/categories']);
     },error => {

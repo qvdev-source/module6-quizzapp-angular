@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-10">
+      <mat-card>
+        <h1>Edit User</h1>
+        <mat-card-content>
+
+          <div class="row">
+            <div class="col-md-6 offset-md-3">
+              <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+                <mat-form-field class="w-100" appearance="fill">
+                  <mat-label>Name</mat-label>
+                  <input
+                    formControlName="name"
+                    type="text"
+                    name="title"
+                    matInput
+                    placeholder="Enter here"
+                    required>
+                </mat-form-field>
+
+                <div class="container text-center">
+                  <button mat-raised-button >Edit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

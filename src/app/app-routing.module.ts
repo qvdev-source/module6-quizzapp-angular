@@ -20,6 +20,8 @@ import {StartQuizComponent} from "./user/start-quiz/start-quiz.component";
 import {ProfileComponent} from "./user/profile/profile.component";
 import {EditCategoryComponent} from "./admin/edit-category/edit-category.component";
 import {UpdatePasswordComponent} from "./user/update-password/update-password.component";
+import {ChatComponent} from "./user/chat/chat.component";
+import {EditUserComponent} from "./user/edit-user/edit-user.component";
 
 const routes: Routes = [
 
@@ -42,9 +44,20 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
   },
+  {
+    path: 'chat',
+    component: ChatComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN, Role.USER]}
+  },
 
   { path: 'user-profile/changepassword',
     component: UpdatePasswordComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
+  },
+  { path: 'edit-profile/:id',
+    component: EditUserComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
   },
