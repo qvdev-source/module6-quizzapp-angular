@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/user";
 import {UserService} from "../../services/user.service";
 import {AuthenticationService} from "../../services/authentication.service";
@@ -12,29 +12,31 @@ import {Role} from "../../models/role";
   styleUrls: ['./show-user.component.css']
 })
 export class ShowUserComponent implements OnInit {
-  displayedColumns: string[] = ['username', 'name', 'createTime', 'role','action'];
+  displayedColumns: string[] = ['username', 'name', 'createTime', 'role', 'action'];
   currenUser: User = new User;
   users = [{
-    id:'',
-    username:'',
-    name:'',
-    role:'',
-    createTime:'',
-    password:'',
-    token:'',
-    updateTime:''
+    id: '',
+    username: '',
+    name: '',
+    role: '',
+    createTime: '',
+    password: '',
+    token: '',
+    updateTime: ''
   }];
 
-  constructor(private userService:UserService,
-              private authenticationService : AuthenticationService,
-              private router : Router) { this.authenticationService.currentUser.subscribe(data => {
-    this.currenUser = data;
-  });}
+  constructor(private userService: UserService,
+              private authenticationService: AuthenticationService,
+              private router: Router) {
+    this.authenticationService.currentUser.subscribe(data => {
+      this.currenUser = data;
+    });
+  }
 
   ngOnInit(): void {
 
     this.userService.getAllUser().subscribe(
-      (data:any)=>{
+      (data: any) => {
         this.users = data;
         console.log(this.users);
       }
@@ -45,9 +47,7 @@ export class ShowUserComponent implements OnInit {
     return this.currenUser?.role === Role.SUPER_ADMIN;
   }
 
-
-
-  updateRole(username:string) {
+  updateRole(username: string) {
     console.log(username)
     Swal.fire({
       title: 'Do you want to update the role?',
@@ -58,7 +58,7 @@ export class ShowUserComponent implements OnInit {
     }).then((result) => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
-        this.userService.makeAdmin(username).subscribe(()=>{
+        this.userService.makeAdmin(username).subscribe(() => {
           Swal.fire({
             title: 'Save success',
             confirmButtonText: 'OK',
@@ -66,13 +66,41 @@ export class ShowUserComponent implements OnInit {
           }).then((e) => {
             window.location.reload();
           })
-        },error => {
+        }, error => {
           Swal.fire('Error', 'Have error , try again later', 'info')
         })
       } else if (result.isDenied) {
         Swal.fire('Changes are not saved', '', 'info')
       }
     })
-
   }
+
+  updateRoleToUser(username: string) {
+    console.log(username)
+    Swal.fire({
+      title: 'Do you want to update the role?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Save',
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.userService.makeUser(username).subscribe(() => {
+          Swal.fire({
+            title: 'Save success',
+            confirmButtonText: 'OK',
+            icon: "success"
+          }).then((e) => {
+            window.location.reload();
+          })
+        }, error => {
+          Swal.fire('Error', 'Have error , try again later', 'info')
+        })
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info')
+      }
+    })
+  }
+
 }

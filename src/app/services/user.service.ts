@@ -24,4 +24,9 @@ export class UserService extends RequestBaseService{
     return this.http.put(`${API_MAKEADMIN}/makeadmin/${username}`,username,{headers:this.getHeaders});
   }
 
+  public makeUser(username:string) {
+    return this.http.put(`${API_MAKEADMIN}/makeuser/${username}`,username,{headers:this.getHeaders});
+  }
+
+
 }
