@@ -46,6 +46,7 @@ import { QuestionFilterPipe } from './admin/view-quiz-questions/question-filter.
 import { CategoryFilterPipe } from './admin/view-categories/category-filter.pipe';
 import { ShowUserComponent } from './superadmin/show-user/show-user.component';
 import {MatTableModule} from "@angular/material/table";
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {MatTableModule} from "@angular/material/table";
     QuizFilterPipe,
     QuestionFilterPipe,
     CategoryFilterPipe,
-    ShowUserComponent
+    ShowUserComponent,
+    ForgotPasswordComponent
   ],
     imports: [
         BrowserModule,
