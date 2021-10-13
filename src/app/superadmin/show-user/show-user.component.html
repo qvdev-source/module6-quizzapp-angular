@@ -37,10 +37,10 @@
 <!--        action-->
         <ng-container matColumnDef="action">
           <th mat-header-cell *matHeaderCellDef> Action </th>
-          <td mat-cell *matCellDef="let element">
+          <td mat-cell *matCellDef="let element" [hidden]="element.role.includes('SUPER_ADMIN')">
             <button mat-raised-button [disabled]="!element.role.includes('USER')" *ngIf="isSuperAdmin()" style="margin-right: 5px" (click)="updateRole(element.username)">Change to admin</button>
             <button mat-raised-button [disabled]="!element.role.includes('ADMIN')" *ngIf="isSuperAdmin()" style="margin-right: 5px" (click)="updateRoleToUser(element.username)">Change to user</button>
-            <button mat-raised-button>Delete</button>
+            <button mat-raised-button>Delete</button></td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
