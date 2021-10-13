@@ -34,6 +34,7 @@ export class EditUserComponent implements OnInit {
         id: new FormControl(data.id),
         password: new FormControl(data.password),
         username: new FormControl(data.username),
+        role: new FormControl(data.role),
       });
 
 

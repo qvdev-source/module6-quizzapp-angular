@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Stomp} from "@stomp/stompjs";
+import {AuthenticationService} from "../../services/authentication.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-chat',
@@ -14,14 +17,16 @@ export class ChatComponent implements OnInit {
   disabled = true;
   name: string;
   private stompClient: any;
-  private Stomp: any;
+  user: any = null;
 
 
 
-  constructor() {
+  constructor(private login: AuthenticationService,
+              private http: HttpClient) {
   }
 
   ngOnInit(): void {
+    this.user = this.login.getUser();
   }
 
   setConnected(connected: boolean) {
@@ -34,7 +39,7 @@ export class ChatComponent implements OnInit {
 
   connect() {
     const socket = new WebSocket('ws://localhost:8080/gkz-stomp-endpoint/websocket/');
-    this.stompClient = this.Stomp.over(socket);
+    this.stompClient = Stomp.over(socket);
 
 
     const _this = this;
@@ -61,7 +66,7 @@ export class ChatComponent implements OnInit {
     this.stompClient.send(
       '/gkz/chat',
       {},
-      JSON.stringify({ 'name': this.name ,'message': this.message})
+      JSON.stringify({ 'name': this.user.name ,'message': this.message})
     );
   }
 

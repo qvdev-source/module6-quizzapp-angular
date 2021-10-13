@@ -1,39 +1,73 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-10">
+      <mat-card>
 
-<div style="color: blue; text-align: center">
-  <h1>{{title}}</h1>
-  <h3>{{description}}</h3>
+        <mat-card-content>
+          <tr>
+            <th>Show Chat's:</th>
+          </tr>
+
+          <table id="conversation" class="table table-striped" style="margin-top: 20px;">
+            <thead>
+
+            </thead>
+            <tbody *ngFor="let greeting of greetings">
+            <tr>
+              <td>{{greeting}}</td>
+            </tr>
+            </tbody>
+          </table>
+
+
+          <form class="form-inline">
+            <div class="form-group">
+              <label for="connect">Make Connection:</label>
+              <button id="connect" class="btn btn-default" type="button" [disabled]="!disabled" (click)="connect()">
+                Connect
+              </button>
+              <button id="disconnect" class="btn btn-default" type="submit" [disabled]="disabled"
+                      (click)="disconnect()">Disconnect
+              </button>
+            </div>
+          </form>
+
+          <form class="form-inline" style="margin-top: 20px;">
+            <div class="form-group">
+              <label for="name">User Name : </label>
+              <input
+                type="text" id="name"
+                name="name"
+                matInput
+                class="form-control"
+                [(ngModel)]="user.name">
+            </div>
+          </form>
+          <form style="margin-top: 20px;">
+            <div class="form-group">
+              <label for="name"> Comment's : </label>
+              <textarea
+                type="text"
+                name="name"
+                matInput
+                class="form-control"
+                [(ngModel)]="message"></textarea>
+            </div>
+          </form>
+
+          <button id="send" class="btn btn-success" type="button" (click)="sendName()">Send</button>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
 </div>
 
-<div class="container" style="width: 400px; margin-top: 20px;">
 
-  <form class="form-inline">
-    <div class="form-group">
-      <label for="connect">Make Connection:</label>
-      <button id="connect" class="btn btn-default" type="button" [disabled]="!disabled" (click)="connect()">Connect</button>
-      <button id="disconnect" class="btn btn-default" type="submit" [disabled]="disabled" (click)="disconnect()">Disconnect</button>
-    </div>
-  </form>
 
-  <form class="form-inline" style="margin-top: 20px;">
-    <div class="form-group">
-      <label for="name">User's Name:</label>
-      <input type="text" id="name" name="name" class="form-control" [(ngModel)]="name" />
-      <input type="text" name="name" class="form-control" [(ngModel)]="message" />
-    </div>
-    <button id="send" class="btn btn-default" type="button" (click)="sendName()">Send</button>
-  </form>
 
-  <table id="conversation" class="table table-striped" style="margin-top: 20px;">
-    <thead>
-    <tr>
-      <th>Greetings</th>
-    </tr>
-    </thead>
-    <tbody *ngFor="let greeting of greetings">
-    <tr>
-      <td>{{greeting}}</td>
-    </tr>
-    </tbody>
-  </table>
 
-</div>
+
