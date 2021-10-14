@@ -8,5 +8,6 @@ export class User {
   name: string = "";
   token: string = "";
   role: Role = Role.USER;
+  confirmPassword:string="";
 
 }

@@ -205,7 +205,7 @@
       </mat-card-content>
       <mat-card-actions>
         <div class="container">
-          <button mat-raised-button>Save</button>
+          <button mat-raised-button (click)="saveQuizHistory(quizHistory)">Save</button>
           <button mat-raised-button [routerLink]="['/profile']">Home</button>
         </div>
       </mat-card-actions>

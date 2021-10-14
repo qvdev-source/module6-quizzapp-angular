@@ -19,6 +19,8 @@ import {AddQuestionComponent} from "./admin/add-question/add-question.component"
 import {StartQuizComponent} from "./user/start-quiz/start-quiz.component";
 import {ProfileComponent} from "./user/profile/profile.component";
 import {UpdatePasswordComponent} from "./user/update-password/update-password.component";
+import {ShowUserComponent} from "./superadmin/show-user/show-user.component";
+import {ForgotPasswordComponent} from "./user/forgot-password/forgot-password.component";
 
 const routes: Routes = [
 
@@ -38,6 +40,16 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.ADMIN, Role.USER,Role.SUPER_ADMIN]}
+  },
+
+  { path: 'resetpassword',
+    component: ForgotPasswordComponent,
+  },
+
+  { path: 'all-user',
+    component: ShowUserComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.ADMIN,Role.SUPER_ADMIN]}
   },
 
   { path: 'user-profile/changepassword',

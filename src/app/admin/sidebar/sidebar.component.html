@@ -1,13 +1,14 @@
-<mat-card>
+<mat-card style="margin-top: 20px">
   <mat-action-list>
     <div mat-subheader>Menu</div>
-    <button mat-list-item><mat-icon mat-list-icon>home</mat-icon>Home</button>
-    <button mat-list-item [routerLink]="['/user-profile']"><mat-icon mat-list-icon>face</mat-icon>Profile</button>
-    <button mat-list-item [routerLink]="['/categories']">
+    <button mat-list-item routerLinkActive="active"><mat-icon mat-list-icon>home</mat-icon>Home</button>
+    <button mat-list-item  routerLinkActive="active" [routerLink]="['/user-profile']"><mat-icon mat-list-icon>face</mat-icon>Profile</button>
+    <button mat-list-item  *ngIf="isSuperAdmin() || isAdmin()" routerLinkActive="active" [routerLink]="['/all-user']"><mat-icon mat-list-icon>manage_accounts</mat-icon>All User</button>
+    <button mat-list-item routerLinkActive="active" [routerLink]="['/categories']">
       <mat-icon mat-list-icon>list</mat-icon>Categories</button>
-    <button *ngIf="isAdmin() || isSuperAdmin()" [routerLink]="['/add-category']" mat-list-item routerLinkActive="active"><mat-icon mat-list-icon>add_circle_outline</mat-icon>Add Categories</button>
-    <button  [routerLink]="['/quiz']" mat-list-item><mat-icon mat-list-icon>quiz</mat-icon>Quizzes</button>
-    <button *ngIf="isAdmin() || isSuperAdmin()" routerLinkActive="active" mat-list-item [routerLink]="['/add-quiz']"><mat-icon mat-list-icon>add</mat-icon>Add Quizzes</button>
+<!--    <button routerLinkActive="active" *ngIf="isAdmin() || isSuperAdmin()" [routerLink]="['/add-category']" mat-list-item routerLinkActive="active"><mat-icon mat-list-icon>add_circle_outline</mat-icon>Add Categories</button>-->
+    <button routerLinkActive="active" [routerLink]="['/quiz']" mat-list-item><mat-icon mat-list-icon>quiz</mat-icon>Quizzes</button>
+<!--    <button routerLinkActive="active" *ngIf="isAdmin() || isSuperAdmin()" routerLinkActive="active" mat-list-item [routerLink]="['/add-quiz']"><mat-icon mat-list-icon>add</mat-icon>Add Quizzes</button>-->
     <button (click)="logout()" *ngIf="currenUser?.id" mat-list-item><mat-icon mat-list-icon>logout</mat-icon>Log out</button>
   </mat-action-list>
 </mat-card>
