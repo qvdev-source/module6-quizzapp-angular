@@ -10,7 +10,6 @@
           <div class="row">
             <div class="col-md-8 offset-md-2 text-center">
               <form (ngSubmit)="addQuiz()">
-                <!--              title field-->
                 <mat-form-field class="w-100" appearance="fill">
                   <mat-label>Enter Title</mat-label>
                   <input type="text"
@@ -19,7 +18,7 @@
                          placeholder="Enter Here" matInput
                          required>
                 </mat-form-field>
-                <!--              description field-->
+
                 <mat-form-field class="w-100" appearance="fill">
                   <mat-label>Description</mat-label>
                   <textarea name="description"
@@ -27,7 +26,6 @@
                             placeholder="Enter Here" matInput rows="5"></textarea>
                 </mat-form-field>
                 <div class="row">
-                  <!--                max marks-->
                   <div class="col-md-6">
                     <mat-form-field class="w-100" appearance="fill">
                       <mat-label>Maximum Marks</mat-label>
@@ -37,7 +35,7 @@
                              placeholder="Enter Here" matInput>
                     </mat-form-field>
                   </div>
-                  <!--                numberOfQuestions-->
+
                   <div class="col-md-6">
                     <mat-form-field class="w-100" appearance="fill">
                       <mat-label>Number of questions</mat-label>
@@ -48,15 +46,20 @@
                     </mat-form-field>
                   </div>
                 </div>
-                <!--                active field-->
+
                 <mat-slide-toggle
                   name="active"
                   [(ngModel)]="quizData.active"
                   style="margin-right: 100px">
                   Publish Status
                 </mat-slide-toggle>
-                <!--                category select-->
-                <mat-form-field appearance="fill">
+<!--<<<<<<< HEAD-->
+<!--                &lt;!&ndash;                category select&ndash;&gt;-->
+<!--                <mat-form-field appearance="fill">-->
+<!--=======-->
+
+                <mat-form-field appearance="fill" >
+
                   <mat-label>Categories</mat-label>
                   <mat-select name="category" [(ngModel)]="quizData.category">
                     <mat-option *ngFor="let c of categories" [value]="c">
@@ -65,7 +68,7 @@
                   </mat-select>
                 </mat-form-field>
                 <div class="container text-center">
-                  <button mat-raised-button>Add</button>
+                  <button mat-raised-button>Create Quiz</button>
                 </div>
               </form>
             </div>

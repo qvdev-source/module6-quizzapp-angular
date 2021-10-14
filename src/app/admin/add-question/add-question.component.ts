@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {QuizService} from "../../services/quiz.service";
 import {QuestionService} from "../../services/question.service";
 import Swal from "sweetalert2";
@@ -29,7 +29,8 @@ export class AddQuestionComponent implements OnInit {
   }
 
   constructor(private _route:ActivatedRoute,
-              private _question:QuestionService) { }
+              private _question:QuestionService,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.qId = this._route.snapshot.params.qid;
@@ -59,13 +60,18 @@ export class AddQuestionComponent implements OnInit {
       return;
     }
     this._question.addQuestionOfQuiz(this.question).subscribe((data:any)=>{
-      Swal.fire('Success','Question Addes . Add another one','success');
+      Swal.fire({
+        icon: 'success',
+        title: 'Save quetion success',
+        text: 'Done !',
+      })
       this.question.content="";
       this.question.option1="";
       this.question.option2="";
       this.question.option3="";
       this.question.option4="";
       this.question.answer="";
+      this.router.navigate(['/profile'])
     },error => {
       Swal.fire('Error','Error in adding question',error);
     })

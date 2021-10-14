@@ -15,7 +15,9 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./view-quizz.component.css']
 })
 export class ViewQuizzComponent implements OnInit {
-  quizzes: Array<Quiz> = [];
+
+  quizzes: Quiz[] = [];
+
   currenUser: User = new User;
   searchText: any;
 
@@ -78,18 +80,5 @@ export class ViewQuizzComponent implements OnInit {
     })
   }
 
-
-  // title: string;
-  //
-  // private getTitle() {
-  //   this.http.get<Quiz>(`http://localhost:8080/api/quiz/find/${this.title}`).subscribe(title => {
-  //     // @ts-ignore
-  //     this.quizzes = title;
-  //   });
-  // }
-  //
-  // searchQuiz() {
-  //   this.getTitle();
-  // }
 
 }

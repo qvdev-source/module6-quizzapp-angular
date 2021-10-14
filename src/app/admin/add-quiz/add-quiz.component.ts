@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Category} from "../../models/category";
 import {CategoryService} from "../../services/category.service";
 import Swal from "sweetalert2";
-import {Quiz} from "../../models/quiz";
 import {QuizService} from "../../services/quiz.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+
 import {Router} from "@angular/router";
+
+import {Quiz} from "../../models/quiz";
+
 
 @Component({
   selector: 'app-add-quiz',
@@ -13,75 +16,41 @@ import {Router} from "@angular/router";
   styleUrls: ['./add-quiz.component.css']
 })
 export class AddQuizComponent implements OnInit {
-
-  categories=[{
-    cid:'23',
-    title:"AC",
-    description:'ANMC'
-  }];
-
-  quizData=
-    {
-      title:'',
-      description:'',
-      maxMarks:'',
-      numberOfQuestions:'',
-      active:true,
-      category:{
-        cid: '',
-      }
-    }
+  categories: Category[];
+  quizData: Quiz = new Quiz();
 
 
-
-
-  constructor(private cate : CategoryService,
-              private _quiz:QuizService,
-              private snack:MatSnackBar,
-              private router: Router) { }
-
-  ngOnInit(): void {
-  this.cate.getAllCategory().subscribe((data:any)=>{
-    this.categories = data;
-    console.log(this.categories);
-  },error => {
-    console.log(error);
-    Swal.fire('Error loading data','','error');
-  })
+  constructor(private categoryService: CategoryService,
+              private quizService: QuizService,
+              private snackBar: MatSnackBar,
+              private router: Router) {
   }
 
 
-  addQuiz() {
-    console.log(this.quizData);
-    if (this.quizData.title.trim() == '' || this.quizData.title==null){
-      this.snack.open('Title Required !!','',{
-        duration:3000,
+  ngOnInit(): void {
+    this.categoryService.getAllCategory().subscribe((data: Category[]) => {
+      this.categories = data;
+    }, () => {
+      Swal.fire('Error loading data', '', 'error');
+    })
+  }
+
+  addQuiz(): void {
+    if (this.quizData.title.trim() == '' || this.quizData.title == null) {
+      this.snackBar.open('Title Required !!', '', {
+        duration: 3000,
       });
       return;
     }
-    // @ts-ignore
-    this._quiz.addQuiz(this.quizData).subscribe(data=>{
-      Swal.fire('Success','quiz is added','success');
-      // @ts-ignore
-      this.quizData ={
-        title:'',
-        description: '',
-        maxMarks: '',
-        numberOfQuestions: '',
-        active: true,
-        category: {
-          cid:'',
-        },
-      };
-
-
-    },error => {
+    this.quizService.addQuiz(this.quizData).subscribe(() => {
+      Swal.fire('Success', 'quiz is added', 'success');
+      this.quizData = new Quiz();
+    },() => {
       Swal.fire('Error','error !!','error');
-      console.log(error)
     })
+
     this.router.navigate(['/quiz']);
 
   }
-
 
 }

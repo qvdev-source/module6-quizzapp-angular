@@ -47,7 +47,9 @@ import { CategoryFilterPipe } from './admin/view-categories/category-filter.pipe
 import { ChatComponent } from './user/chat/chat.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import {ScrollingModule} from "@angular/cdk/scrolling";
-
+import { ShowUserComponent } from './superadmin/show-user/show-user.component';
+import {MatTableModule} from "@angular/material/table";
+import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -79,7 +81,8 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
     CategoryFilterPipe,
     ChatComponent,
     EditUserComponent,
-
+    ForgotPasswordComponent,
+    ShowUserComponent
   ],
   imports: [
     BrowserModule,
@@ -106,8 +109,13 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
       showForeground: true
     }),
     ReactiveFormsModule,
-    ScrollingModule
+    ScrollingModule,
+    MatTableModule,
+
+
+
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
