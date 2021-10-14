@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {AuthenticationService} from "./authentication.service";
 import {RequestBaseService} from "./request-base.service";
+import {Question} from "../models/question";
 const API_URL = `${environment.BASE_URL}/api/question`
 
 @Injectable({
@@ -18,7 +19,7 @@ export class QuestionService extends RequestBaseService{
     return this.http.get(`${API_URL}/quiz/${qid}`);
   }
 
-  public addQuestionOfQuiz(question:any){
+  public addQuestionOfQuiz(question: any){
     return this.http.post(`${API_URL}`,question,{headers:this.getHeaders})
   }
 

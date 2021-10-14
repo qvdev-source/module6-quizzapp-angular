@@ -16,7 +16,7 @@
                          name="title"
                          [(ngModel)]="quizData.title"
                          placeholder="Enter Here" matInput
-                  required>
+                         required>
                 </mat-form-field>
 
                 <mat-form-field class="w-100" appearance="fill">
@@ -55,7 +55,7 @@
                   Publish Status
                 </mat-slide-toggle>
 
-                <mat-form-field appearance="fill" >
+                <mat-form-field appearance="fill">
                   <mat-label>Categories</mat-label>
                   <mat-select name="category" [(ngModel)]="quizData.category">
                     <mat-option *ngFor="let c of categories" [value]="c">
@@ -74,4 +74,3 @@
     </div>
   </div>
 </div>
-

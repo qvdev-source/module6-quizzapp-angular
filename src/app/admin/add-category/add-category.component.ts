@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CategoryService} from "../../services/category.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import Swal from "sweetalert2";
+import {Category} from "../../models/category";
 
 @Component({
   selector: 'app-add-category',
@@ -10,34 +11,31 @@ import Swal from "sweetalert2";
 })
 export class AddCategoryComponent implements OnInit {
 
-  category = {
-    title: '',
-    description: '',
-  };
+  category: Category = new Category();
 
   constructor(
-    private categoryService : CategoryService,
-    private snack : MatSnackBar
-  ) { }
+    private categoryService: CategoryService,
+    private snack: MatSnackBar
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
-  formSubmit(){
-    if (this.category.title.trim()=='' || this.category.title == null){
-      this.snack.open("Title Required !!",'',{
-        duration:3000
+  formSubmit() {
+    if (this.category.title.trim() == '' || this.category.title == null) {
+      this.snack.open("Title Required !!", '', {
+        duration: 3000
       })
       return;
     }
 
-    // @ts-ignore
-    this.categoryService.saveCategory(this.category).subscribe(data=>{
-      this.category.title='';
-      this.category.description='';
-      Swal.fire('Success !!','Category is added successfully','success');
-    },error => {
-      Swal.fire('Error !!','server error !!','error')
+
+    this.categoryService.saveCategory(this.category).subscribe(() => {
+
+      Swal.fire('Success !!', 'Category is added successfully', 'success');
+    }, () => {
+      Swal.fire('Error !!', 'server error !!', 'error')
     })
   }
 

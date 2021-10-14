@@ -40,11 +40,8 @@
 
                 </mat-form-field>
 
-
-                <!--                options-->
                 <div class="row">
                   <div class="col-md-6">
-                    <!--option1-->
                     <mat-form-field class="w-100">
                       <mat-label>Enter Option1</mat-label>
                       <input type="text" matInput
@@ -54,7 +51,6 @@
 
                   </div>
                   <div class="col-md-6">
-                    <!--option  2-->
                     <mat-form-field class="w-100">
                       <mat-label>Enter Option2</mat-label>
                       <input type="text" matInput
@@ -82,9 +78,6 @@
                              name="option4" required>
                     </mat-form-field>
                   </div>
-
-                  <!--                  answer-->
-
 
                 </div>
                 <mat-form-field class="w-100">
@@ -119,12 +112,9 @@
 
               </form>
             </mat-card-content>
-
-<!--            true false question-->
-
+            <!--            True false-->
             <mat-card-content *ngIf="question.image == 'y'">
               <form (submit)="formSubmit()" style="margin-top: 20px">
-
                 <mat-form-field class="w-100">
                   <mat-label>Write content for question</mat-label>
                   <textarea matInput placeholder="Enter here"
@@ -134,34 +124,25 @@
                             required
                   >
                     </textarea>
-
                 </mat-form-field>
-
-
-                <!--                options-->
                 <div class="row">
                   <div class="col-md-6">
-                    <!--option1-->
                     <mat-form-field class="w-100">
                       <mat-label>Enter Option1</mat-label>
                       <input type="text" matInput
                              [(ngModel)]="question.option1"
                              name="option1" required>
                     </mat-form-field>
-
                   </div>
                   <div class="col-md-6">
-                    <!--option  2-->
                     <mat-form-field class="w-100">
                       <mat-label>Enter Option2</mat-label>
                       <input type="text" matInput
                              [(ngModel)]="question.option2"
                              name="option2" required>
                     </mat-form-field>
-
                   </div>
                 </div>
-
                 <mat-form-field class="w-100">
                   <mat-label>Select Answer</mat-label>
                   <mat-select [(ngModel)]="question.answer" name="answer" required>
@@ -177,19 +158,14 @@
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
-
                 <div class="container-fluid">
                   <button mat-raised-button>Add</button>
                 </div>
-
               </form>
             </mat-card-content>
-
-
           </mat-card>
         </div>
       </div>
     </div>
   </div>
 </div>
-

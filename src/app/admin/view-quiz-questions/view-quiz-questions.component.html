@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-md-10">
-     <h1 style="margin-top: 20px">Questions of {{qTitle}}</h1>
+      <h1 style="margin-top: 20px">Questions of {{qTitle}}</h1>
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Search Question</mat-label>
@@ -15,13 +15,15 @@
       <div class="row">
         <div class="col-md-12">
 
-          <button mat-raised-button *ngIf="isAdmin()" [routerLink]="['/add-question',qId,qTitle]" routerLinkActive="active">Add Question</button>
+          <button mat-raised-button *ngIf="isAdmin()" [routerLink]="['/add-question',qId,qTitle]"
+                  routerLinkActive="active">Add Question
+          </button>
 
           <mat-card *ngFor="let q of questions | questionFilter : searchText;let i = index"
                     style="margin-top: 20px">
             <mat-card-content *ngIf="q.image == 'x'">
               <p>
-                <b>Question {{i+1}}</b>
+                <b>Question {{i + 1}}</b>
                 <span style="margin-left: 20px" [innerHTML]="q['content']"></span>
               </p>
 
@@ -48,10 +50,10 @@
 
             </mat-card-content>
 
-<!--            true false -->
+            <!--            true false -->
             <mat-card-content *ngIf="q.image == 'y'">
               <p>
-                <b>Question {{i+1}}</b>
+                <b>Question {{i + 1}}</b>
                 <span style="margin-left: 20px" [innerHTML]="q['content']"></span>
               </p>
 

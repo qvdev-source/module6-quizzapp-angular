@@ -17,6 +17,7 @@ export class ViewCategoriesComponent implements OnInit {
   categories : Array<Category>=[];
   searchText: any;
 
+
   constructor(private categoryService : CategoryService, private authenticationService : AuthenticationService) { }
 
   ngOnInit(): void {
