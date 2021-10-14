@@ -1,6 +1,7 @@
 import {Role} from "./role";
 
 export class User {
+  [x: string]: any;
   id: number | undefined;
   username: string = "";
   password: string = "";

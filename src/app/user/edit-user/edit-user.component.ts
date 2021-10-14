@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {Category} from "../../models/category";
 import Swal from "sweetalert2";
 import {User} from "../../models/user";
+
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-edit-user',
@@ -35,6 +36,7 @@ export class EditUserComponent implements OnInit {
         password: new FormControl(data.password),
         username: new FormControl(data.username),
         role: new FormControl(data.role),
+        createTime: new FormControl(data.createTime),
       });
 
 
@@ -44,12 +46,15 @@ export class EditUserComponent implements OnInit {
   }
 
   saveUser() {
-    this.http.put<User>(`http://localhost:8080/api/authentication/${this.id}`, this.userForm.value).subscribe((data) => {
+    this.http.put<User>(`http://localhost:8080/api/authentication/edit/${this.id}`, this.userForm.value).subscribe((data) => {
       Swal.fire('Success !!', 'quiz updated', 'success');
-    }, error => {
+    }, () => {
       Swal.fire('Error !!', 'edit error', 'error');
     })
     this.router.navigate(['/user-profile']);
   }
+
+
+
 
 }
