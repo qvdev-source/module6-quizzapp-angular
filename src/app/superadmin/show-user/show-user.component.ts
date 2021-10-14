@@ -42,6 +42,14 @@ export class ShowUserComponent implements OnInit {
       }
     )
   }
+  deleteUser(id:number) {
+    if (confirm("Ban co muon xoa")) {
+      this.userService.deleteUser(id).subscribe(
+        (data:any) => {
+          this.ngOnInit()
+        })
+    }
+  }
 
   isSuperAdmin() {
     return this.currenUser?.role === Role.SUPER_ADMIN;
