@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {ResetpasswordService} from "../../services/resetpassword.service";
+import {Component, OnInit} from '@angular/core';
+import {ResetPasswordService} from "../../services/reset-password.service";
 import Swal from "sweetalert2";
 
 @Component({
@@ -15,18 +14,17 @@ export class ForgotPasswordComponent implements OnInit {
     username:''
   }
 
-  constructor(private resetPasswordService: ResetpasswordService) { }
+  constructor(private resetPasswordService: ResetPasswordService) { }
 
   ngOnInit(): void {
   }
 
-  resetPassword() {
-    console.log(this.emailUser);
+  resetPassword(): void {
     this.resetPasswordService.resetPassword(this.emailUser).subscribe(
-      ()=>{
-        Swal.fire('Success','Email sent with your new password , please check your email','success')
-      },error => {
-        Swal.fire('error','Username not found or email not found , try again later !','error')
+      () => {
+        Swal.fire('Success', 'Email sent with your new password , please check your email', 'success')
+      }, error => {
+        Swal.fire('error', 'Username not found or email not found , try again later !', 'error')
       }
     )
   }

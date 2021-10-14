@@ -1,6 +1,5 @@
 export class Category {
-  cid:number;
-  title:string;
-  description:string;
-
+  cid?: number;
+  title?: string;
+  description?: string;
 }
