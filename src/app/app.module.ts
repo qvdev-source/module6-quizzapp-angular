@@ -48,6 +48,7 @@ import { ChatComponent } from './user/chat/chat.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,7 +77,8 @@ import { EditUserComponent } from './user/edit-user/edit-user.component';
     QuestionFilterPipe,
     CategoryFilterPipe,
     ChatComponent,
-    EditUserComponent
+    EditUserComponent,
+    
   ],
   imports: [
     BrowserModule,

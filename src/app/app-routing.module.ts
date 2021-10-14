@@ -23,6 +23,7 @@ import {UpdatePasswordComponent} from "./user/update-password/update-password.co
 import {ChatComponent} from "./user/chat/chat.component";
 import {EditUserComponent} from "./user/edit-user/edit-user.component";
 
+
 const routes: Routes = [
 
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -106,6 +107,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {roles: [Role.ADMIN,Role.SUPER_ADMIN]},
   },
+
   {
     path: 'edit-quiz/:qid',
     component: EditQuizComponent,
