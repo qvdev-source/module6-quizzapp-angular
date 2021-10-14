@@ -26,20 +26,12 @@
       Log out
     </button>
   </mat-action-list>
-
   <header id="header">
     <div class="container-fluid">
-      <button type="button" class="nav-toggle"><i class="bx bx-message btn btn-lg btn-outline-primary" (click)="open(content)"></i></button>
-
-<!--      <nav class="nav-menu">-->
-<!--        <ul>-->
-<!--          <li class="drop-down"><a href="">Drop Down</a></li>-->
-<!--        </ul>-->
-<!--      </nav>-->
+      <button type="button" class="nav-toggle"><i class="bx bx-message btn btn-lg btn-outline-primary"
+                                                  (click)="open(content)"></i></button>
     </div>
   </header>
-
-
   <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
       <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
@@ -47,11 +39,60 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body">
-      <p>Hello, World!</p>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="connect">Status :</label>
+          <button id="connect" class="btn btn-default" type="button" [disabled]="!disabled" (click)="connect()">
+            Connect
+          </button>
+          <button id="disconnect" class="btn btn-default" type="submit" [disabled]="disabled"
+                  (click)="disconnect()">Disconnect
+          </button>
+        </div>
+        <div class="col-md-9">
+          <mat-card>
+            <mat-card-content>
+              <tr>
+                <th>Show Chat's:</th>
+              </tr>
+              <table id="conversation" class="table table-striped" style="margin-top: 20px;">
+                <tbody>
+                <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+                  <div *ngFor="let greeting of greetings" class="example-item">{{greeting}}</div>
+                </cdk-virtual-scroll-viewport>
+                </tbody>
+              </table>
+
+              <form class="form-inline" style="margin-top: 20px;">
+                <div class="form-group">
+                  <label for="name">User Name : </label>
+                  <input
+                    type="text" id="name"
+                    name="name"
+                    matInput
+                    class="form-control"
+                    [(ngModel)]="user.name">
+                </div>
+              </form>
+              <form style="margin-top: 20px;">
+                <div class="form-group">
+                  <label for="name"> Comment's : </label>
+                  <textarea
+                    type="text"
+                    name="name"
+                    matInput
+                    class="form-control"
+                    [(ngModel)]="message"></textarea>
+                </div>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+      <button id="send" type="button" class="btn btn-outline-dark" (click)="sendName()">Send</button>
     </div>
   </ng-template>
 </mat-card>

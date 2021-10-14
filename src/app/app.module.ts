@@ -46,6 +46,7 @@ import { QuestionFilterPipe } from './admin/view-quiz-questions/question-filter.
 import { CategoryFilterPipe } from './admin/view-categories/category-filter.pipe';
 import { ChatComponent } from './user/chat/chat.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 
 
@@ -78,7 +79,7 @@ import { EditUserComponent } from './user/edit-user/edit-user.component';
     CategoryFilterPipe,
     ChatComponent,
     EditUserComponent,
-    
+
   ],
   imports: [
     BrowserModule,
@@ -104,7 +105,8 @@ import { EditUserComponent } from './user/edit-user/edit-user.component';
     NgxUiLoaderHttpModule.forRoot({
       showForeground: true
     }),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

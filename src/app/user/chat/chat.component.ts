@@ -3,10 +3,13 @@ import {Stomp} from "@stomp/stompjs";
 import {AuthenticationService} from "../../services/authentication.service";
 import {HttpClient} from "@angular/common/http";
 
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
+
+
 })
 export class ChatComponent implements OnInit {
   title = 'grokonez';
@@ -73,4 +76,7 @@ export class ChatComponent implements OnInit {
   showGreeting(message: any) {
     this.greetings.push(message);
   }
+
+
+
 }
