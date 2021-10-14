@@ -1,0 +1,33 @@
+
+
+<div class="container">
+  <h1>Historys-Quiz-User</h1>
+
+  <table>
+    <tr *ngFor="let a of quizhistory">
+    <div class="container">
+      <label>#</label>
+      <td class="container-fluid">{{a.id}}</td>
+    </div>
+    <div class="form-group">
+      <label>UserId</label>
+      <td class="form-control">{{a.userId}}</td>
+
+    </div>
+    <div class="form-group">
+      <label>MarksGot</label>
+      <td class="form-control">{{a.marksGot}}</td>
+    </div>
+    <div class="form-group">
+      <label>CorrectAnswers</label>
+      <td class="form-control">{{a.correctAnswers}}</td>
+    </div>
+    <div class="form-group">
+      <label>QuizTitle</label>
+      <td class="form-control">{{a.quizTitle}}</td>
+      <td> ------------------Finsh--------------</td>
+    </div>
+
+    </tr>
+  </table>
+</div>

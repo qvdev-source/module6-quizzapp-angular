@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import {User} from "../../models/user";
 import {AuthenticationService} from "../../services/authentication.service";
 import {QuizHistoryService} from "../../services/quiz-history.service";
+import {Quiz} from "../../models/quiz";
 
 @Component({
   selector: 'app-start-quiz',
@@ -27,11 +28,13 @@ export class StartQuizComponent implements OnInit {
   correctAnswers = 0;
   attempted = 0;
 
+
   quizHistory = {
-    userId: '',
+    userId:'',
     correctAnswers: '',
     marksGot: '',
-    quizId: ''
+    quizId: '',
+    quiz:''
   }
 
   constructor(private locationSt: LocationStrategy,
@@ -145,7 +148,8 @@ export class StartQuizComponent implements OnInit {
           userId: '',
           correctAnswers: '',
           marksGot: '',
-          quizId: ''
+          quizId: '',
+          quiz: ''
         }
         this._router.navigate(['/profile']);
       })

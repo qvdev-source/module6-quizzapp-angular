@@ -7,6 +7,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
 import {User} from "../../models/user";
 import {Role} from "../../models/role";
+import {QuizHistoryService} from "../../services/quiz-history.service";
 
 @Component({
   selector: 'app-view-quizz',
@@ -19,6 +20,7 @@ export class ViewQuizzComponent implements OnInit {
   searchText: any;
 
   constructor(private  quiz:QuizService,
+              private quizHistory:QuizHistoryService,
               private authenticationService : AuthenticationService,
               private router : Router) { }
 

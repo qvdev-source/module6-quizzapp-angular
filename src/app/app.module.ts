@@ -47,6 +47,7 @@ import { CategoryFilterPipe } from './admin/view-categories/category-filter.pipe
 import { ShowUserComponent } from './superadmin/show-user/show-user.component';
 import {MatTableModule} from "@angular/material/table";
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
+import { HistoryQuizComponent } from './user/history-quiz/history-quiz.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.
     QuestionFilterPipe,
     CategoryFilterPipe,
     ShowUserComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    HistoryQuizComponent
   ],
     imports: [
         BrowserModule,
@@ -102,7 +104,8 @@ import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.
         NgxUiLoaderHttpModule.forRoot({
             showForeground: true
         }),
-        MatTableModule
+        MatTableModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]
