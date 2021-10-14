@@ -16,7 +16,8 @@ export class HistoryQuizComponent implements OnInit {
    marksGot:'',
    correctAnswers:'',
    quizId:'',
-   quizTitle:''
+   quizTitle:'',
+   username:''
 
  }];
  userId:string
@@ -28,16 +29,16 @@ export class HistoryQuizComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.userId = this.activeRoute.snapshot.params.userId;
+      this.userId = this.activeRoute.snapshot.paramMap.get('userId');
       this.listHistory(this.userId)
     }
 
    private listHistory(userId: string) {
     this.quizHistoryId.getHistoryQuizId(this.userId).subscribe((data:any)=>{
       this.quizhistory=data
-      console.log(this.quizhistory)
     })
 
   }
+
 }
 

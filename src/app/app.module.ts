@@ -78,7 +78,8 @@ import { HistoryQuizComponent } from './user/history-quiz/history-quiz.component
     CategoryFilterPipe,
     ShowUserComponent,
     ForgotPasswordComponent,
-    HistoryQuizComponent
+    HistoryQuizComponent,
+
   ],
     imports: [
         BrowserModule,

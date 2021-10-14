@@ -131,7 +131,7 @@ const routes: Routes = [
     path: 'list/:userId',
     component: HistoryQuizComponent,
     canActivate: [AuthGuard],
-    data: {roles: [Role.ADMIN,Role.USER,Role.SUPER_ADMIN]},
+    data: {roles: [Role.USER,Role.SUPER_ADMIN,Role.ADMIN]},
   },
 
 ];

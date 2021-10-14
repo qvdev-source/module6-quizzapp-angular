@@ -4,6 +4,7 @@ export class Quizhistory {
   marksGot:string;
   correctAnswers:string;
   quizId:string;
-  quiz:any
+  quiz:any;
+  username:any;
 
 }

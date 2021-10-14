@@ -5,6 +5,7 @@ import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
 import Swal from "sweetalert2";
 import {Role} from "../../models/role";
+import {HistoryQuizComponent} from "../../user/history-quiz/history-quiz.component";
 
 @Component({
   selector: 'app-show-user',
@@ -24,10 +25,13 @@ export class ShowUserComponent implements OnInit {
     token: '',
     updateTime: ''
   }];
+  private history: HistoryQuizComponent
+  userId: number;
 
   constructor(private userService: UserService,
               private authenticationService: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+  ) {
     this.authenticationService.currentUser.subscribe(data => {
       this.currenUser = data;
     });
@@ -42,10 +46,11 @@ export class ShowUserComponent implements OnInit {
       }
     )
   }
-  deleteUser(id:number) {
+
+  deleteUser(id: number) {
     if (confirm("Ban co muon xoa")) {
       this.userService.deleteUser(id).subscribe(
-        (data:any) => {
+        (data: any) => {
           this.ngOnInit()
         })
     }
@@ -109,6 +114,11 @@ export class ShowUserComponent implements OnInit {
         Swal.fire('Changes are not saved', '', 'info')
       }
     })
+  }
+
+  showHistory(userId: number): void {
+    this.router.navigate(['/list/'+userId ]);
+    console.log(userId);
   }
 
 }

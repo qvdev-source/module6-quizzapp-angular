@@ -9,6 +9,8 @@
 <!--    <button routerLinkActive="active" *ngIf="isAdmin() || isSuperAdmin()" [routerLink]="['/add-category']" mat-list-item routerLinkActive="active"><mat-icon mat-list-icon>add_circle_outline</mat-icon>Add Categories</button>-->
     <button routerLinkActive="active" [routerLink]="['/quiz']" mat-list-item><mat-icon mat-list-icon>quiz</mat-icon>Quizzes</button>
 <!--    <button routerLinkActive="active" *ngIf="isAdmin() || isSuperAdmin()" routerLinkActive="active" mat-list-item [routerLink]="['/add-quiz']"><mat-icon mat-list-icon>add</mat-icon>Add Quizzes</button>-->
+    <button mat-list-item *ngIf="!isSuperAdmin() && !isAdmin()"  routerLinkActive="active" [routerLink]="['/list',currenUser.id]"><mat-icon mat-list-icon>history</mat-icon>QuizHistory</button>
+
     <button (click)="logout()" *ngIf="currenUser?.id" mat-list-item><mat-icon mat-list-icon>logout</mat-icon>Log out</button>
   </mat-action-list>
 </mat-card>
