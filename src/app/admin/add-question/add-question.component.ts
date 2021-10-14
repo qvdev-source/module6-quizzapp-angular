@@ -61,10 +61,9 @@ export class AddQuestionComponent implements OnInit {
     }
     this._question.addQuestionOfQuiz(this.question).subscribe((data:any)=>{
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: '<a [routerLink]="">Why do I have this issue?</a>'
+        icon: 'success',
+        title: 'Save quetion success',
+        text: 'Done !',
       })
       this.question.content="";
       this.question.option1="";
