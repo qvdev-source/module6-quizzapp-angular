@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import {User} from "../../models/user";
 
 import {MatDialog} from "@angular/material/dialog";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AuthenticationService} from "../../services/authentication.service";
 
 @Component({
   selector: 'app-edit-user',
@@ -18,7 +20,8 @@ export class EditUserComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private http: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private authenticationService:AuthenticationService) {
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = parseInt(<string>paramMap.get('id'));
       this.getUser(this.id);
@@ -38,23 +41,19 @@ export class EditUserComponent implements OnInit {
         role: new FormControl(data.role),
         createTime: new FormControl(data.createTime),
       });
-
-
-      console.log(data.name);
-      console.log(data.id);
     })
   }
 
   saveUser() {
     this.http.put<User>(`http://localhost:8080/api/authentication/edit/${this.id}`, this.userForm.value).subscribe((data) => {
-      Swal.fire('Success !!', 'quiz updated', 'success');
+      Swal.fire('Success !!', 'Reset Login', 'success');
     }, () => {
       Swal.fire('Error !!', 'edit error', 'error');
     })
-    this.router.navigate(['/user-profile']);
+
+    this.authenticationService.logOut();
+    this.router.navigate(['/login']);
+
   }
-
-
-
 
 }
