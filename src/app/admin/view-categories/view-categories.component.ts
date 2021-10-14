@@ -29,6 +29,7 @@ export class ViewCategoriesComponent implements OnInit {
               private router: Router) {
   }
 
+
   ngOnInit(): void {
 
     this.authenticationService.currentUser.subscribe(data => {

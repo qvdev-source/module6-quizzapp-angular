@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {QuizService} from "../../services/quiz.service";
 import {QuestionService} from "../../services/question.service";
 import Swal from "sweetalert2";
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -16,10 +15,11 @@ export class AddQuestionComponent implements OnInit {
 
   qId:any;
   qTitle:any;
+  // question: Question = new Question();
   question={
     quiz:{
-
     },
+    image:'',
     content:'',
     option1:'',
     option2:'',
@@ -43,35 +43,16 @@ export class AddQuestionComponent implements OnInit {
     if (this.question.content.trim()==''|| this.question.content==null){
       return;
     }
-
-    if (this.question.option1.trim()==''|| this.question.option1==null){
-      return;
-    }
-    if (this.question.option2.trim()==''|| this.question.option2==null){
-      return;
-    }
-    if (this.question.option3.trim()==''|| this.question.option3==null){
-      return;
-    }
-    if (this.question.option4.trim()==''|| this.question.option4==null){
-      return;
-    }
     if (this.question.answer.trim()==''|| this.question.answer==null){
       return;
     }
-    this._question.addQuestionOfQuiz(this.question).subscribe((data:any)=>{
+    this._question.addQuestionOfQuiz(this.question).subscribe(()=>{
       Swal.fire({
         icon: 'success',
-        title: 'Save quetion success',
-        text: 'Done !',
+        title: 'Success',
+        text: 'Question is Add!'
       })
-      this.question.content="";
-      this.question.option1="";
-      this.question.option2="";
-      this.question.option3="";
-      this.question.option4="";
-      this.question.answer="";
-      this.router.navigate(['/profile'])
+      this.router.navigate(['/view-questions/'+ this.qId +'/'+this.qTitle])
     },error => {
       Swal.fire('Error','Error in adding question',error);
     })

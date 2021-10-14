@@ -3,9 +3,8 @@
     <div class="col-md-2">
       <app-sidebar></app-sidebar>
     </div>
-
     <div class="col-md-10">
-     <h1 style="margin-top: 20px">Questions of {{qTitle}}</h1>
+      <h1 style="margin-top: 20px">Questions of {{qTitle}}</h1>
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Search Question</mat-label>
@@ -14,17 +13,16 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-
-          <button mat-raised-button *ngIf="isAdmin()" [routerLink]="['/add-question',qId,qTitle]" routerLinkActive="active">Add Question</button>
-
-
-          <mat-card *ngFor="let q of questions | questionFilter : searchText;let i = index" style="margin-top: 20px">
-            <mat-card-content>
+          <button mat-raised-button *ngIf="isAdmin()" [routerLink]="['/add-question',qId,qTitle]"
+                  routerLinkActive="active">Add Question
+          </button>
+          <mat-card *ngFor="let q of questions | questionFilter : searchText;let i = index"
+                    style="margin-top: 20px">
+            <mat-card-content *ngIf="q.image == 'x'">
               <p>
-                <b>Question {{i+1}}</b>
+                <b>Question {{i + 1}}</b>
                 <span style="margin-left: 20px" [innerHTML]="q['content']"></span>
               </p>
-
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-6">
@@ -36,18 +34,34 @@
                 </div>
                 <div class="row">
                   <div class="col-md-6">
-                    <p>1) {{ q['option3']}}</p>
+                    <p>3) {{ q['option3']}}</p>
                   </div>
                   <div class="col-md-6">
-                    <p>2) {{ q['option4']}}</p>
+                    <p>4) {{ q['option4']}}</p>
                   </div>
                 </div>
                 <mat-divider></mat-divider>
                 <p style="margin-top: 20px" *ngIf="isAdmin()"><b>Correct Answer : {{q['answer']}}</b></p>
               </div>
-
             </mat-card-content>
-
+            <mat-card-content *ngIf="q.image == 'y'">
+              <p>
+                <b>Question {{i + 1}}</b>
+                <span style="margin-left: 20px" [innerHTML]="q['content']"></span>
+              </p>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p>1) {{ q['option1']}}</p>
+                  </div>
+                  <div class="col-md-6">
+                    <p>2) {{ q['option2']}}</p>
+                  </div>
+                </div>
+                <mat-divider></mat-divider>
+                <p style="margin-top: 20px" *ngIf="isAdmin()"><b>Correct Answer : {{q['answer']}}</b></p>
+              </div>
+            </mat-card-content>
             <mat-card-actions>
               <button mat-button color="warn" (click)="deleteQuesion(q['quesId'])">Delete</button>
               <button mat-button color="primary">Update</button>

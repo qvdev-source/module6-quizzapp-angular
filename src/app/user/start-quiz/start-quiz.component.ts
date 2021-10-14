@@ -118,7 +118,8 @@ export class StartQuizComponent implements OnInit {
       if (q.givenAnswer == q.answer) {
         this.correctAnswers++
         let marksSingle = this.questions[0].quiz.maxMarks / this.questions.length;
-        this.marksGot += marksSingle;
+        this.marksGot += Math.round(marksSingle * 100) / 100 ;
+
       }
 
       if (q.givenAnswer.trim() != '') {

@@ -23,15 +23,15 @@ export class QuizService extends RequestBaseService{
     return this.http.post(`${API_URL}`,quiz,{headers:this.getHeaders})
   }
 
-  deleteQuiz(qId:any){
+  deleteQuiz(qId:number){
     return this.http.delete(`${API_URL}/${qId}`,{headers:this.getHeaders})
   }
 
-  getQuiz(qid:any){
+  getQuiz(qid:number){
     return this.http.get(`${API_URL}/${qid}`)
   }
 
-  updateQuiz(quiz:any){
+  updateQuiz(quiz:Quiz){
     return this.http.put(`${API_URL}`,quiz,{headers:this.getHeaders});
   }
 

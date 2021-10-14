@@ -2,12 +2,13 @@ import {Role} from "./role";
 
 export class User {
   [x: string]: any;
-  id: number | undefined;
-  username: string = "";
-  password: string = "";
-  name: string = "";
-  token: string = "";
+  // [x: string]: any;
+  id?: number | undefined;
+  username?: string = "";
+  password?: string = "";
+  name?: string = "";
+  token?: string = "";
   role: Role = Role.USER;
-  confirmPassword:string="";
+  confirmPassword?: string = "";
 
 }

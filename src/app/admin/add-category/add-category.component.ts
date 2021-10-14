@@ -53,3 +53,42 @@ export class AddCategoryComponent implements OnInit {
   }
 
 }
+// export class AddCategoryComponent implements OnInit {
+//
+//   categoryForm: FormGroup;
+//   category: Category = new Category();
+//   constructor(
+//     private categoryService: CategoryService,
+//     private snack: MatSnackBar,
+//     private router: Router,
+//     private fb: FormBuilder) {
+//
+//   //
+//   // constructor(
+//   //   private categoryService: CategoryService,
+//   //   private snack: MatSnackBar
+//   //
+//   }
+//
+//   ngOnInit(): void {
+//     this.categoryForm = this.fb.group({
+//       title: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+//       description: [null, Validators.maxLength(5000)]
+//     })
+//   }
+//
+//   formSubmit() {
+//     if (this.category.title.trim() == '' || this.category.title == null) {
+//       this.snack.open("Title Required !!", '', {
+//         duration: 3000
+//       })
+//       return;
+//     }
+//
+//     this.categoryService.saveCategory(this.category).subscribe(() => {
+//       Swal.fire('Success !!', 'Category is added successfully', 'success');
+//     }, () => {
+//       Swal.fire('Error !!', 'server error !!', 'error')
+//     })
+//   }
+// }

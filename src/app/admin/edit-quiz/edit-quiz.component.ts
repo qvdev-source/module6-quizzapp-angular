@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {QuizService} from "../../services/quiz.service";
 import {CategoryService} from "../../services/category.service";
 import Swal from "sweetalert2";
+import {Category} from "../../models/category";
 
 @Component({
   selector: 'app-edit-quiz',
@@ -12,34 +13,35 @@ import Swal from "sweetalert2";
 export class EditQuizComponent implements OnInit {
 
   qId = 0;
-  quiz:any;
-  categories: any;
-  constructor(private router : ActivatedRoute,
-              private _quiz : QuizService,
-              private _cat:CategoryService) { }
+  quiz: any;
+  categories: Category[];
+
+  constructor(private router: ActivatedRoute,
+              private _quiz: QuizService,
+              private _cat: CategoryService) {
+  }
 
   ngOnInit(): void {
     this.qId = this.router.snapshot.params.qid;
     this._quiz.getQuiz(this.qId).subscribe(
-      (data:any)=>{
+      (data: any) => {
         this.quiz = data;
-        console.log(this.quiz);
-      }, (error:any) => {
+      }, (error: any) => {
         console.log(error);
       }
     );
-    this._cat.getAllCategory().subscribe(data=>{
+    this._cat.getAllCategory().subscribe((data: Category[]) => {
       this.categories = data;
-    },error => {
+    }, error => {
       console.log(error);
     })
   }
 
   updateQuiz() {
-    this._quiz.updateQuiz(this.quiz).subscribe(data=>{
-      Swal.fire('Success !!','quiz updated','success');
-    },error => {
-      Swal.fire('Error !!','quiz error','error');
+    this._quiz.updateQuiz(this.quiz).subscribe(data => {
+      Swal.fire('Success !!', 'quiz updated', 'success');
+    }, error => {
+      Swal.fire('Error !!', 'quiz error', 'error');
     })
   }
 }

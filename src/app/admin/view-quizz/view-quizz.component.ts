@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {QuizService} from "../../services/quiz.service";
 import Swal from "sweetalert2";
-import {Category} from "../../models/category";
 import {Quiz} from "../../models/quiz";
 import {AuthenticationService} from "../../services/authentication.service";
 import {Router} from "@angular/router";
@@ -53,10 +52,13 @@ export class ViewQuizzComponent implements OnInit {
       showCancelButton: true,
     }).then(result => {
       if (result.isConfirmed) {
-        this.quiz.deleteQuiz(qId).subscribe(data => {
+
+        this.quiz.deleteQuiz(qId).subscribe(() => {
           this.quizzes = this.quizzes.filter(quiz => quiz.qId != qId);
           Swal.fire('Success', 'Quiz Deleted', 'success');
-        }, error => {
+
+        }, () => {
+
           Swal.fire('Error', 'Error in deleteing quiz', 'error')
         })
       }
@@ -73,6 +75,7 @@ export class ViewQuizzComponent implements OnInit {
       icon: "info"
     }).then((result) => {
       if (result.isConfirmed) {
+
         this.router.navigate(['/start-quiz/' + qId])
       } else if (result.isDenied) {
         Swal.fire('Change are not saved', '', 'info')

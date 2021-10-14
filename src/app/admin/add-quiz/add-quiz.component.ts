@@ -45,8 +45,8 @@ export class AddQuizComponent implements OnInit {
     this.quizService.addQuiz(this.quizData).subscribe(() => {
       Swal.fire('Success', 'quiz is added', 'success');
       this.quizData = new Quiz();
-    },() => {
-      Swal.fire('Error','error !!','error');
+    }, () => {
+      Swal.fire('Error', 'error !!', 'error');
     })
 
     this.router.navigate(['/quiz']);

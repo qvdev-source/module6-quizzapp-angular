@@ -23,7 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
     this.resetPasswordService.resetPassword(this.emailUser).subscribe(
       () => {
         Swal.fire('Success', 'Email sent with your new password , please check your email', 'success')
-      }, error => {
+      }, (error) => {
         Swal.fire('error', 'Username not found or email not found , try again later !', 'error')
       }
     )
