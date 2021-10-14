@@ -17,7 +17,21 @@
         <mat-card-content *ngIf="randomLocationAnswer == 1">
           <p><b>Question {{i + 1}}. </b><span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
           <mat-divider></mat-divider>
-          <div class="row" style="margin-top: 20px">
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'x'">
+
+            <div class="col-md-6">
+              <input type="radio" [value]="q.option1" [name]="i" [(ngModel)]="q.givenAnswer">
+              {{q.option1}}
+            </div>
+
+            <div class="col-md-6">
+              <input type="radio" [value]="q.option2" [name]="i" [(ngModel)]="q.givenAnswer">
+              {{q.option2}}
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'y'">
 
             <div class="col-md-6">
               <input type="radio" [value]="q.option1" [name]="i" [(ngModel)]="q.givenAnswer">
@@ -32,7 +46,7 @@
           </div>
 
 
-          <div class="row" style="margin-top: 20px">
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'x'">
 
             <div class="col-md-6">
               <input type="radio" [value]="q.option3" [name]="i" [(ngModel)]="q.givenAnswer">
@@ -52,7 +66,7 @@
         <mat-card-content *ngIf="randomLocationAnswer == 2">
           <p><b>Question {{i + 1}}. </b><span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
           <mat-divider></mat-divider>
-          <div class="row" style="margin-top: 20px">
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'x'">
 
             <div class="col-md-6">
               <input type="radio" [value]="q.option2" [name]="i" [(ngModel)]="q.givenAnswer">
@@ -66,8 +80,22 @@
 
           </div>
 
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'y'">
 
-          <div class="row" style="margin-top: 20px">
+            <div class="col-md-6">
+              <input type="radio" [value]="q.option1" [name]="i" [(ngModel)]="q.givenAnswer">
+              {{q.option1}}
+            </div>
+
+            <div class="col-md-6">
+              <input type="radio" [value]="q.option2" [name]="i" [(ngModel)]="q.givenAnswer">
+              {{q.option2}}
+            </div>
+
+          </div>
+
+
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'x'">
 
             <div class="col-md-6">
               <input type="radio" [value]="q.option3" [name]="i" [(ngModel)]="q.givenAnswer">
@@ -88,7 +116,7 @@
         <mat-card-content *ngIf="randomLocationAnswer == 3">
           <p><b>Question {{i + 1}}. </b><span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
           <mat-divider></mat-divider>
-          <div class="row" style="margin-top: 20px">
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'x'">
 
             <div class="col-md-6">
               <input type="radio" [value]="q.option4" [name]="i" [(ngModel)]="q.givenAnswer">
@@ -102,8 +130,21 @@
 
           </div>
 
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'y'">
 
-          <div class="row" style="margin-top: 20px">
+            <div class="col-md-6">
+              <input type="radio" [value]="q.option1" [name]="i" [(ngModel)]="q.givenAnswer">
+              {{q.option1}}
+            </div>
+
+            <div class="col-md-6">
+              <input type="radio" [value]="q.option2" [name]="i" [(ngModel)]="q.givenAnswer">
+              {{q.option2}}
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'x'">
 
             <div class="col-md-6">
               <input type="radio" [value]="q.option3" [name]="i" [(ngModel)]="q.givenAnswer">
@@ -124,11 +165,25 @@
         <mat-card-content *ngIf="randomLocationAnswer == 4">
           <p><b>Question {{i + 1}}. </b><span style="margin-left: 20px" [innerHTML]="q.content"></span></p>
           <mat-divider></mat-divider>
-          <div class="row" style="margin-top: 20px">
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'x'">
 
             <div class="col-md-6">
               <input type="radio" [value]="q.option3" [name]="i" [(ngModel)]="q.givenAnswer">
               {{q.option3}}
+            </div>
+
+            <div class="col-md-6" >
+              <input type="radio" [value]="q.option2" [name]="i" [(ngModel)]="q.givenAnswer">
+              {{q.option2}}
+            </div>
+
+          </div>
+
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'y'">
+
+            <div class="col-md-6">
+              <input type="radio" [value]="q.option1" [name]="i" [(ngModel)]="q.givenAnswer">
+              {{q.option1}}
             </div>
 
             <div class="col-md-6">
@@ -137,9 +192,7 @@
             </div>
 
           </div>
-
-
-          <div class="row" style="margin-top: 20px">
+          <div class="row" style="margin-top: 20px" *ngIf="q.image == 'x'">
 
             <div class="col-md-6">
               <input type="radio" [value]="q.option4" [name]="i" [(ngModel)]="q.givenAnswer">

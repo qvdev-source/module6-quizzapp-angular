@@ -20,6 +20,7 @@ export class AddQuestionComponent implements OnInit {
     quiz:{
 
     },
+    image:'',
     content:'',
     option1:'',
     option2:'',
@@ -44,18 +45,18 @@ export class AddQuestionComponent implements OnInit {
       return;
     }
 
-    if (this.question.option1.trim()==''|| this.question.option1==null){
-      return;
-    }
-    if (this.question.option2.trim()==''|| this.question.option2==null){
-      return;
-    }
-    if (this.question.option3.trim()==''|| this.question.option3==null){
-      return;
-    }
-    if (this.question.option4.trim()==''|| this.question.option4==null){
-      return;
-    }
+    // if (this.question.option1.trim()==''|| this.question.option1==null){
+    //   return;
+    // }
+    // if (this.question.option2.trim()==''|| this.question.option2==null){
+    //   return;
+    // }
+    // if (this.question.option3.trim()==''|| this.question.option3==null){
+    //   return;
+    // }
+    // if (this.question.option4.trim()==''|| this.question.option4==null){
+    //   return;
+    // }
     if (this.question.answer.trim()==''|| this.question.answer==null){
       return;
     }
