@@ -14,7 +14,7 @@ import {Role} from "../../models/role";
   styleUrls: ['./view-quizz.component.css']
 })
 export class ViewQuizzComponent implements OnInit {
-  quizzes : Array<Quiz>=[];
+  quizzes: Quiz[] = [];
   currenUser: User = new User;
   searchText: any;
 

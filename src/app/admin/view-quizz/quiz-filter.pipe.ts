@@ -6,7 +6,7 @@ import {Quiz} from "../../models/quiz";
 })
 export class QuizFilterPipe implements PipeTransform {
 
-  transform(list: Quiz[], searchText: string): any {
+  transform(list: Quiz[], searchText: string): Quiz[] {
     if (!list ){
       return null;
     }

@@ -8,7 +8,7 @@ const API_URL = `${environment.BASE_URL}/api/user/resetpassword`
 @Injectable({
   providedIn: 'root'
 })
-export class ResetpasswordService {
+export class ResetPasswordService {
 
   constructor(private http: HttpClient) {
   }
