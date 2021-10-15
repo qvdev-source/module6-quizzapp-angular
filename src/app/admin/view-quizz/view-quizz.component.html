@@ -3,7 +3,11 @@
     <div class="col-md-2">
       <app-sidebar></app-sidebar>
     </div>
+
     <div class="col-md-10">
+      <div>
+        <h1>Show All Quizzes</h1>
+      </div>
       <div>
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Search Quiz By Name:</mat-label>
@@ -38,16 +42,16 @@
 
           <button  mat-button>Number of questions {{q.numberOfQuestions}}</button>
 
-          <button mat-stroked-button [matMenuTriggerFor]="menu" color="accent">Menu</button>
-          <mat-menu #menu="matMenu">
+          <button mat-stroked-button [matMenuTriggerFor]="menu" color="accent" *ngIf="isAdmin()">Menu</button>
+          <mat-menu #menu="matMenu" >
             <div>
-              <button *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-quiz',q.qId]" mat-stroked-button
+              <button  routerLinkActive="active" [routerLink]="['/edit-quiz',q.qId]" mat-stroked-button
                       style="margin-left: 20px">Update
               </button>
             </div>
             <br>
             <div>
-              <button *ngIf="isAdmin()" routerLinkActive="active" mat-stroked-button style="margin-left: 20px"
+              <button  routerLinkActive="active" mat-stroked-button style="margin-left: 20px"
                       (click)="deleteQuiz(q.qId)">Delete Quiz
               </button>
             </div>
