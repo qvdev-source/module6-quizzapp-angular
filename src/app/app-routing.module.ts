@@ -27,6 +27,7 @@ import {EditUserComponent} from "./user/edit-user/edit-user.component";
 
 import {ShowUserComponent} from "./superadmin/show-user/show-user.component";
 import {ForgotPasswordComponent} from "./user/forgot-password/forgot-password.component";
+import {HistoryQuizComponent} from "./user/history-quiz/history-quiz.component";
 
 
 const routes: Routes = [
@@ -153,6 +154,12 @@ const routes: Routes = [
 
   {path: '404', component: NotFoundComponent},
   {path: '401', component: UnauthorizedComponent},
+  {
+    path: 'list/:userId',
+    component: HistoryQuizComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [Role.USER,Role.SUPER_ADMIN,Role.ADMIN]},
+  },
 
 ];
 

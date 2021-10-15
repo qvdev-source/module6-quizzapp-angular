@@ -50,7 +50,9 @@ export class AddQuestionComponent implements OnInit {
       Swal.fire({
         icon: 'success',
         title: 'Success',
-        text: 'Question is Add!'
+        text: 'Question is Add!',
+        footer: '<a [routerLink]="">Why do I have this issue?</a>'
+
       })
       this.router.navigate(['/view-questions/'+ this.qId +'/'+this.qTitle])
     },error => {

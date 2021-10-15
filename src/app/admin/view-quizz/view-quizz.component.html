@@ -5,10 +5,15 @@
     </div>
     <div class="col-md-10">
       <div>
-        <mat-form-field appearance="outline">
-          <mat-label>Search Quiz</mat-label>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Search Quiz By Name:</mat-label>
           <input matInput placeholder="Enter here" [(ngModel)]="searchText">
         </mat-form-field>
+      </div>
+      <div class="container text-center mt-3">
+        <button *ngIf="isAdmin()"
+                routerLinkActive="active" [routerLink]="['/add-quiz']" mat-raised-button color="primary">Add New Quiz
+        </button>
       </div>
       <div *ngIf="quizzes.length < 1" class="alert alert-info">No data.</div>
       <mat-card class="mt-3 mr-3" *ngFor="let q of quizzes | quizFilter : searchText">
@@ -25,26 +30,35 @@
           <p>{{q.description}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button *ngIf="isAdmin()"
-                  [routerLink]="['/view-questions/',q.qId,q.title]"
-          >Questions
+          <button mat-stroked-button *ngIf="isAdmin()"
+                  [routerLink]="['/view-questions/',q.qId,q.title]" color="primary">Questions
           </button>
-          <button mat-stroked-button>Max Marks {{q.maxMarks}}</button>
-          <button mat-stroked-button>Number of questions {{q.numberOfQuestions}}</button>
-          <button *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-quiz',q.qId]" mat-stroked-button
-                  style="margin-left: 20px">Update
-          </button>
-          <button (click)="startQuiz(q.qId)" mat-stroked-button style="margin-left: 20px">Start Quiz</button>
-          <button *ngIf="isAdmin()" routerLinkActive="active" mat-stroked-button style="margin-left: 20px"
-                  (click)="deleteQuiz(q.qId)">Delete Quiz
-          </button>
+
+          <button  mat-button>Max Marks {{q.maxMarks}}</button>
+
+          <button  mat-button>Number of questions {{q.numberOfQuestions}}</button>
+
+          <button mat-stroked-button [matMenuTriggerFor]="menu" color="accent">Menu</button>
+          <mat-menu #menu="matMenu">
+            <div>
+              <button *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-quiz',q.qId]" mat-stroked-button
+                      style="margin-left: 20px">Update
+              </button>
+            </div>
+            <br>
+            <div>
+              <button *ngIf="isAdmin()" routerLinkActive="active" mat-stroked-button style="margin-left: 20px"
+                      (click)="deleteQuiz(q.qId)">Delete Quiz
+              </button>
+            </div>
+
+          </mat-menu>
+          <button (click)="startQuiz(q.qId)" mat-stroked-button style="margin-left: 20px" color="primary">Start Quiz</button>
+
         </mat-card-actions>
       </mat-card>
-      <div class="container text-center mt-3">
-        <button *ngIf="isAdmin()"
-                routerLinkActive="active" [routerLink]="['/add-quiz']" mat-raised-button>Add New Quiz
-        </button>
-      </div>
+
     </div>
   </div>
+
 </div>

@@ -2,12 +2,11 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <h1 class="text-center mt-3">Register Here !!</h1>
-      <form #f="ngForm" (ngSubmit)="f.form.valid">
+      <form #f="ngForm" (ngSubmit)="f.form.valid && register()">
 
         <div class="alert alert-danger" *ngIf="errorMessage">
           {{errorMessage}}
         </div>
-        <!--        username field-->
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Username</mat-label>
           <input matInput placeholder="Enter here"
@@ -21,7 +20,8 @@
                  maxlength="25"/>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
-        <div class="alert-danger" *ngIf="!username.valid && (username?.dirty||username?.touched)" style="margin-bottom: 20px">
+        <div class="alert-danger" *ngIf="!username.valid && (username?.dirty||username?.touched)"
+             style="margin-bottom: 20px">
           User name is required.minlength=6.maxLength=25
 
         </div>
@@ -36,8 +36,7 @@
                  #name="ngModel"
                  required
                  minlength="6"
-                 maxlength="25"
-          />
+                 maxlength="25"/>
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
         <div class="alert-danger" *ngIf="!name.valid && (name?.dirty||name?.touched)" style="margin-bottom: 20px">
@@ -52,47 +51,45 @@
                  [(ngModel)]="user.password"
                  #password="ngModel"
                  required
-                 pattern="(?=^.{6,18}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
-          >
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                 pattern="(?=^.{6,8}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
         </mat-form-field>
-        <div class="alert-danger" *ngIf="!password.valid && (password?.dirty||password?.touched)" style="margin-bottom: 20px">
-          Password must have a minimum of 6 characters and maximum 18 characters, at least 1 uppercase letter and a number
+        <div class="alert-danger" *ngIf="!password.valid && (password?.dirty||password?.touched)"
+             style="margin-bottom: 20px">
+          Password must have a minimum of 6 characters and maximum 8 characters, at least 1 uppercase letter and a
+          number
         </div>
-
-<<<<<<< HEAD
-=======
-
-        <!--        ConfirmPassword Field-->
-
-        <!--        <mat-form-field class="full-width" appearance="outline">-->
-        <!--          <mat-label>Confirm password</mat-label>-->
-        <!--          <input matInput [type]="hide ? 'password' : 'text'"-->
-        <!--                 id="cfpassword"-->
-        <!--                 name="cfpassword"-->
-        <!--                 [(ngModel)]="user.confirmPassword"-->
-        <!--                 #password="ngModel"-->
-        <!--                 required-->
-        <!--                 pattern="(?=^.{6,18}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"-->
-        <!--          >-->
-        <!--          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">-->
-        <!--            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>-->
-        <!--          </button>-->
-        <!--        </mat-form-field>-->
-
-
->>>>>>> dev-tuan
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Confirm password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'"
+                 id="cfpassword"
+                 name="cfpassword"
+                 [(ngModel)]="user.confirmPassword"
+                 #cfpassword="ngModel"
+                 required
+                 pattern="(?=^.{6,8}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+          <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <div class="alert-danger" *ngIf="!cfpassword.valid && (cfpassword?.dirty||cfpassword?.touched)"
+             style="margin-bottom: 20px">
+          Password must have a minimum of 6 characters and maximum 8 characters, at least 1 uppercase letter and a
+          number
+        </div>
         <div class="container text-center">
-          <button mat-raised-button color="primary" type="submit" (click)="register()">Register</button>
+          <button mat-raised-button color="primary" type="submit">Register</button>
         </div>
       </form>
       <div class="container text-center">
         <a [routerLink]="['/login']" class="btn btn-link" style="color: darkgray;">
-          I have an account!
-        </a>
+          I have an account!</a>
       </div>
     </div>
   </div>
 </div>
+

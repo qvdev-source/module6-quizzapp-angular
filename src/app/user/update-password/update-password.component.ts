@@ -13,7 +13,7 @@ import {ChangePasswordService} from "../../services/change-password.service";
   styleUrls: ['./update-password.component.css']
 })
 export class UpdatePasswordComponent implements OnInit {
-
+  hide=true;
   currenUser: User = new User;
 
   userChangePassword = {
@@ -21,7 +21,6 @@ export class UpdatePasswordComponent implements OnInit {
     oldPassword: '',
     newPassword: ''
   }
-  hide = true;
 
   constructor(private authenticationService: AuthenticationService, private router: Router,
               private ngxService: NgxUiLoaderService,

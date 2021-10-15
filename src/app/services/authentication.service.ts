@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {User} from "../models/user";
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
+import {FormGroup} from "@angular/forms";
 
 const API_URL = `${environment.BASE_URL}/api/authentication/`
 
@@ -56,6 +57,26 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
     this.currenUserSubject.next(new User);
   }
+  MathPassword(password:string,confirmPassword:string){
+
+    // @ts-ignore
+    return( formgroup: FormGroup) =>{
+      const passwordControl=formgroup.controls[password];
+      const confirmPasswordControl=formgroup.controls[confirmPassword];
+      if (!passwordControl || !confirmPasswordControl){
+        return null
+      }
+      if (confirmPasswordControl.errors && !confirmPasswordControl.errors.passwordMismatch){
+        return  null
+      }
+      if (passwordControl.value !== confirmPasswordControl.value) {
+        confirmPasswordControl.setErrors({ passwordMismatch: true });
+      } else {
+        confirmPasswordControl.setErrors(null);
+      }
+    }
+    }
+
 
   changePassword(){
 

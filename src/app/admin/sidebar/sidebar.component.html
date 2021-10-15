@@ -1,7 +1,7 @@
 <mat-card style="margin-top: 20px">
   <mat-action-list>
     <div mat-subheader>Menu</div>
-    <button mat-list-item routerLinkActive="active">
+    <button mat-list-item routerLinkActive="active" [routerLink]="['/home']">
       <mat-icon mat-list-icon>home</mat-icon>
       Home
     </button>
@@ -14,6 +14,7 @@
       All User
     </button>
     <button mat-list-item routerLinkActive="active" [routerLink]="['/categories']">
+
       <mat-icon mat-list-icon>list</mat-icon>
       Categories
     </button>
@@ -25,6 +26,15 @@
       <mat-icon mat-list-icon>logout</mat-icon>
       Log out
     </button>
+
+<!--      <mat-icon mat-list-icon>list</mat-icon>Categories</button>-->
+<!--&lt;!&ndash;    <button routerLinkActive="active" *ngIf="isAdmin() || isSuperAdmin()" [routerLink]="['/add-category']" mat-list-item routerLinkActive="active"><mat-icon mat-list-icon>add_circle_outline</mat-icon>Add Categories</button>&ndash;&gt;-->
+<!--    <button routerLinkActive="active" [routerLink]="['/quiz']" mat-list-item><mat-icon mat-list-icon>quiz</mat-icon>Quizzes</button>-->
+<!--&lt;!&ndash;    <button routerLinkActive="active" *ngIf="isAdmin() || isSuperAdmin()" routerLinkActive="active" mat-list-item [routerLink]="['/add-quiz']"><mat-icon mat-list-icon>add</mat-icon>Add Quizzes</button>&ndash;&gt;-->
+    <button mat-list-item *ngIf="!isSuperAdmin() && !isAdmin()"  routerLinkActive="active" [routerLink]="['/list',currenUser.id]"><mat-icon mat-list-icon>history</mat-icon>QuizHistory</button>
+
+<!--    <button (click)="logout()" *ngIf="currenUser?.id" mat-list-item><mat-icon mat-list-icon>logout</mat-icon>Log out</button>-->
+<!--&gt;>>>>>> dev-tam-->
   </mat-action-list>
   <header id="header">
     <div class="container-fluid">

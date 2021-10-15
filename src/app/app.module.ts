@@ -13,7 +13,9 @@ import { LoginComponent } from './pages/login/login.component';
 import {MatInputModule} from "@angular/material/input";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatIconModule} from "@angular/material/icon";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
+import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {HttpClientModule} from "@angular/common/http";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -50,7 +52,8 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
 import { ShowUserComponent } from './superadmin/show-user/show-user.component';
 import {MatTableModule} from "@angular/material/table";
 import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.component';
-
+import { HistoryQuizComponent } from './user/history-quiz/history-quiz.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -82,7 +85,8 @@ import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.
     ChatComponent,
     EditUserComponent,
     ForgotPasswordComponent,
-    ShowUserComponent
+    ShowUserComponent,
+    HistoryQuizComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,9 +115,7 @@ import { ForgotPasswordComponent } from './user/forgot-password/forgot-password.
     ReactiveFormsModule,
     ScrollingModule,
     MatTableModule,
-
-
-
+    MatMenuModule
   ],
 
   providers: [],

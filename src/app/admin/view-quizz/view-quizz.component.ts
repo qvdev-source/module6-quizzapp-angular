@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {User} from "../../models/user";
 import {Role} from "../../models/role";
 import {HttpClient} from "@angular/common/http";
+import {QuizHistoryService} from "../../services/quiz-history.service";
 
 @Component({
   selector: 'app-view-quizz',
@@ -20,10 +21,12 @@ export class ViewQuizzComponent implements OnInit {
   currenUser: User = new User;
   searchText: any;
 
+
   constructor(private quiz: QuizService,
               private authenticationService: AuthenticationService,
               private router: Router,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private quizHistory:QuizHistoryService) {
   }
 
   ngOnInit(): void {
@@ -42,7 +45,6 @@ export class ViewQuizzComponent implements OnInit {
   isAdmin() {
     return this.currenUser?.role === Role.ADMIN;
   }
-
 
   deleteQuiz(qId: number) {
     Swal.fire({

@@ -8,8 +8,8 @@
         <mat-list>
           <div><h1>All categories</h1></div>
           <div>
-            <mat-form-field appearance="outline">
-              <mat-label>Search Category</mat-label>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Search Category By Name:</mat-label>
               <input matInput placeholder="Enter here" [(ngModel)]="searchText">
             </mat-form-field>
           </div>
@@ -18,16 +18,16 @@
             <div mat-line>{{c.title}}</div>
             <div mat-line>{{c.description}}</div>
             <button *ngIf="isAdmin()" routerLinkActive="active" [routerLink]="['/edit-category',c.cid]"
-                    mat-raised-button>Edit
+                    mat-raised-button >Edit
             </button>&nbsp;
-            <button *ngIf="isAdmin()" routerLinkActive="active" (click)="deleteCategory(c.cid)" mat-raised-button>
+            <button *ngIf="isAdmin()" routerLinkActive="active" (click)="deleteCategory(c.cid)" mat-raised-button color="accent">
               Delete
             </button>
             <mat-divider></mat-divider>
           </mat-list-item>
         </mat-list>
         <div class="container text-center" style="margin-top: 20px">
-          <button *ngIf="isAdmin()" mat-raised-button routerLinkActive="active" [routerLink]="['/add-category']">Add New
+          <button *ngIf="isAdmin()" mat-raised-button routerLinkActive="active" [routerLink]="['/add-category']" color="primary">Add New
             Category
           </button>
         </div>

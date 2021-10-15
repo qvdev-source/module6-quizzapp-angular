@@ -20,6 +20,16 @@ export class QuizHistoryService extends RequestBaseService{
   addQuizHistory(quizHistory:any):Observable<any>{
     return this.http.post(`${API_URL}`,quizHistory,{headers:this.getHeaders})
   }
+  public getHistoryQuizId(userId: string):Observable<any>{
+return this.http.get(`${API_URL}/${userId}`,{headers:this.getHeaders})
+
+  }
+  public getHistoryQuiz():Observable<any>{
+    return this.http.get(`${API_URL}`,{headers:this.getHeaders})
+
+  }
+
+
 
 
 }
