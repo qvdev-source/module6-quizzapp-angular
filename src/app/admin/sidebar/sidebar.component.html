@@ -28,7 +28,7 @@
     </button>
     <button mat-list-item *ngIf="!isSuperAdmin() && !isAdmin()" routerLinkActive="active"
             [routerLink]="['/list',currenUser.id]">
-      <mat-icon mat-list-icon>history</mat-icon>
+      <mat-icon mat-list-icon></mat-icon>
       QuizHistory
     </button>
   </mat-action-list>
